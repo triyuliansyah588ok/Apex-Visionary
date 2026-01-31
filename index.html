@@ -10,12 +10,12 @@
         /* Logo Utama Apex */
         .logo-utama img { max-width: 150px; border-radius: 12px; box-shadow: 0 0 20px #00f2ff; margin-bottom: 20px; }
         
-        h1 { font-size: 1.4rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 30px; }
+        h1 { font-size: 1.4rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 30px; color: #fff; text-shadow: 0 0 10px #00f2ff; }
         
-        .container { display: flex; flex-direction: column; gap: 25px; align-items: center; }
+        .container { display: flex; flex-direction: column; gap: 30px; align-items: center; }
 
         /* Logo Stasiun TV */
-        .logo-stasiun { width: 100px; height: auto; margin-bottom: 10px; display: block; margin-left: auto; margin-right: auto; }
+        .logo-stasiun { width: 100px; height: auto; margin-bottom: 12px; display: block; margin-left: auto; margin-right: auto; }
 
         .btn { 
             display: block; padding: 18px; width: 85%; max-width: 320px; 
@@ -24,28 +24,30 @@
         }
 
         /* Warna NS TV */
-        .ns { background: #1a1a1a; color: #ff004c; border: 2px solid #ff004c; }
+        .ns { background: #1a1a1a; color: #ff004c; border: 2px solid #ff004c; box-shadow: 0 0 10px rgba(255, 0, 76, 0.3); }
         
         /* Warna VAMS TV */
-        .vams { background: #1a1a1a; color: #00f2ff; border: 2px solid #00f2ff; }
+        .vams { background: #1a1a1a; color: #00f2ff; border: 2px solid #00f2ff; box-shadow: 0 0 10px rgba(0, 242, 255, 0.3); }
+        
+        .btn:active { transform: scale(0.95); opacity: 0.8; }
     </style>
 </head>
 <body>
 
     <div class="logo-utama">
-        <img src="logopng" onerror="this.src='https://via.placeholder.com/150?text=APEX';" alt="Logo Utama">
+        <img src="logo.png" onerror="this.src='https://via.placeholder.com/150?text=APEX';" alt="Logo Utama">
     </div>
 
     <h1>THE APEX VISIONARY</h1>
 
     <div class="container">
         <div>
-            <img src="logons" class="logo-stasiun" onerror="this.src='https://via.placeholder.com/100x50?text=NS+LOGO';">
+            <img src="logons.png" class="logo-stasiun" onerror="this.src='https://via.placeholder.com/100x50?text=NS+LOGO';">
             <a href="https://padlin691-crypto.github.io/NS-TV-Visionary/" class="btn ns">MASUK NS TV</a>
         </div>
 
         <div>
-            <img src="logovams" class="logo-stasiun" onerror="this.src='https://via.placeholder.com/100x50?text=VAMS+LOGO';">
+            <img src="logovams.png" class="logo-stasiun" onerror="this.src='https://via.placeholder.com/100x50?text=VAMS+LOGO';">
             <a href="https://padlin691-crypto.github.io/VAMS-TV-Visionary/" class="btn vams">MASUK VAMS TV</a>
         </div>
     </div>
