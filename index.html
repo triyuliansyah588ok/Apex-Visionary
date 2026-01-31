@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>THE APEX VISIONARY</title>
+    <link rel="icon" type="image/png" href="logo.png">
     <style>
         body { background: #000; color: #fff; font-family: sans-serif; text-align: center; margin: 0; padding: 0; }
         .marquee-container { background: #1a1a1a; color: #00f2ff; padding: 10px; font-weight: bold; border-bottom: 2px solid #00f2ff; }
@@ -14,13 +15,8 @@
         .card { width: 85%; max-width: 350px; }
         .logo-stasiun { width: 120px; border-radius: 10px; margin-bottom: 10px; }
         .btn { display: block; padding: 15px; text-decoration: none; font-weight: bold; border-radius: 12px; text-transform: uppercase; transition: 0.3s; }
-        
-        /* Warna NS TV (Pink/Merah) */
         .ns { color: #ff004c; border: 2px solid #ff004c; box-shadow: 0 0 10px #ff004c; }
-        
-        /* Warna VAMS TV (Biru Neon) */
         .vams { color: #00f2ff; border: 2px solid #00f2ff; box-shadow: 0 0 10px #00f2ff; }
-        
         .btn:active { transform: scale(0.95); opacity: 0.8; }
     </style>
 </head>
@@ -28,26 +24,21 @@
     <div class="marquee-container">
         <marquee>SELAMAT DATANG DI THE APEX VISIONARY — SIARAN VAMS TV DAN NS TV SEKARANG TERSEDIA — HUBUNGI: triyuliansyah588ok@gmail.com</marquee>
     </div>
-
     <div class="logo-utama">
         <img src="logo.png" onerror="this.src='https://via.placeholder.com/150?text=APEX';">
     </div>
-    
     <h1>THE APEX VISIONARY</h1>
     <div id="clock">Memuat Waktu...</div>
-
     <div class="container">
         <div class="card">
             <img src="logons.png" class="logo-stasiun" onerror="this.src='https://via.placeholder.com/100?text=NS+TV';">
             <a href="https://triyuliansyah588ok.github.io/NSTV/" class="btn ns">MASUK NS TV</a>
         </div>
-
         <div class="card">
             <img src="logovams.png" class="logo-stasiun" onerror="this.src='https://via.placeholder.com/100?text=VAMS+TV';">
             <a href="https://triyuliansyah588ok.github.io/VAMSTV/" class="btn vams">MASUK VAMS TV</a>
         </div>
     </div>
-
     <script>
         function updateClock() {
             var now = new Date();
