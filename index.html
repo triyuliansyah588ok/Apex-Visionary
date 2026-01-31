@@ -3,88 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE APEX VISIONARY - OFFICIAL</title>
+    <title>THE APEX VISIONARY - OFFICIAL PORTAL</title>
     
     <meta property="og:title" content="THE APEX VISIONARY">
-    <meta property="og:description" content="Streaming VAMS TV & NS TV. Dukung kami via DANA 082227473281">
+    <meta property="og:description" content="Portal Streaming VAMS TV & NS TV. Dukung kami via DANA 082227473281">
     <meta property="og:image" content="logo.png">
     
     <link rel="icon" type="image/png" href="logo.png">
     <style>
-        body { background: #000; color: #fff; font-family: 'Segoe UI', Arial, sans-serif; text-align: center; margin: 0; padding: 0; }
-        .marquee-container { background: #1a1a1a; color: #00f2ff; padding: 10px; font-weight: bold; border-bottom: 2px solid #00f2ff; }
-        .logo-utama img { max-width: 180px; margin-top: 25px; border-radius: 20px; box-shadow: 0 0 25px rgba(255,255,0,0.4); }
-        h1 { font-size: 1.4rem; letter-spacing: 2px; margin: 15px 0; text-shadow: 0 0 10px #00f2ff; }
-        #clock { color: #ff004c; font-size: 18px; font-weight: bold; margin-bottom: 20px; }
+        :root { --pink: #ff004c; --cyan: #00f2ff; --gold: #ffd700; }
+        body { background: #000; color: #fff; font-family: 'Segoe UI', sans-serif; text-align: center; margin: 0; padding: 0; }
         
-        .container { display: flex; flex-direction: column; gap: 25px; align-items: center; padding: 0 20px 50px 20px; }
-        .card { width: 100%; max-width: 380px; background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; border: 1px solid #333; box-sizing: border-box; }
+        /* Pengumuman Berjalan */
+        .marquee-container { background: #111; color: var(--cyan); padding: 12px; font-weight: bold; border-bottom: 2px solid var(--cyan); font-size: 14px; }
         
-        /* Tombol Utama */
-        .btn { display: block; padding: 15px; text-decoration: none; font-weight: bold; border-radius: 12px; text-transform: uppercase; transition: 0.3s; margin: 10px 0; }
-        .ns { color: #ff004c; border: 2px solid #ff004c; box-shadow: 0 0 10px #ff004c; }
-        .vams { color: #00f2ff; border: 2px solid #00f2ff; box-shadow: 0 0 10px #00f2ff; }
+        /* Header & Logo */
+        .header-section { padding: 30px 20px; }
+        .logo-utama img { max-width: 160px; border-radius: 25px; box-shadow: 0 0 30px rgba(0, 242, 255, 0.3); margin-bottom: 15px; }
+        h1 { font-size: 1.6rem; letter-spacing: 3px; margin: 10px 0; text-transform: uppercase; }
+        #clock { color: var(--pink); font-size: 20px; font-weight: bold; font-family: monospace; letter-spacing: 2px; }
+
+        /* Container Utama */
+        .container { display: flex; flex-direction: column; gap: 20px; align-items: center; padding: 20px; max-width: 500px; margin: auto; }
+        .card { width: 100%; background: #0a0a0a; padding: 25px; border-radius: 20px; border: 1px solid #222; box-sizing: border-box; }
 
         /* Jadwal Acara */
-        .jadwal-list { text-align: left; font-size: 14px; color: #ccc; line-height: 2; }
-        .jadwal-list b { color: #ffd700; }
+        .jadwal-title { color: var(--gold); margin-top: 0; font-size: 18px; border-bottom: 1px solid #333; padding-bottom: 10px; }
+        .jadwal-item { text-align: left; font-size: 15px; margin: 12px 0; color: #bbb; display: flex; justify-content: space-between; }
+        .jadwal-item b { color: var(--gold); }
 
-        /* Section Donasi */
-        .donasi-box { border: 1px dashed #ffd700; background: #0a0a0a; }
-        .dana-btn { background: #0077ff; color: #fff; padding: 12px; text-decoration: none; display: block; border-radius: 8px; font-weight: bold; margin-top: 15px; }
-        
-        /* Facebook Buttons */
-        .fb-btn { display: block; width: 100%; color: white; padding: 12px; text-decoration: none; border-radius: 30px; font-weight: bold; font-size: 13px; margin: 10px 0; }
+        /* Tombol Stasiun TV */
+        .btn { display: block; padding: 16px; text-decoration: none; font-weight: bold; border-radius: 15px; text-transform: uppercase; transition: 0.3s; margin: 15px 0; font-size: 15px; }
+        .btn-ns { color: var(--pink); border: 2px solid var(--pink); box-shadow: 0 0 15px rgba(255, 0, 76, 0.2); }
+        .btn-vams { color: var(--cyan); border: 2px solid var(--cyan); box-shadow: 0 0 15px rgba(0, 242, 255, 0.2); }
+        .btn:hover { transform: translateY(-3px); background: rgba(255,255,255,0.05); }
+
+        /* Section Donasi DANA */
+        .donasi-box { border: 1px dashed var(--gold); }
+        .dana-num { font-size: 22px; font-weight: bold; color: #fff; margin: 15px 0; letter-spacing: 1px; }
+        .dana-btn { background: #0077ff; color: white; padding: 12px; text-decoration: none; display: block; border-radius: 10px; font-weight: bold; }
+
+        /* Social Media & Footer */
+        .fb-btn { display: block; padding: 12px; color: white; text-decoration: none; border-radius: 30px; margin: 10px 0; font-size: 13px; font-weight: bold; }
+        .footer-info { background: #0a0a0a; padding: 30px 20px; border-top: 1px solid #222; margin-top: 40px; font-size: 12px; color: #555; }
     </style>
 </head>
 <body>
+
     <div class="marquee-container">
-        <marquee>SELAMAT DATANG DI THE APEX VISIONARY — DUKUNG KAMI VIA DANA 082227473281 — CEK JADWAL SIARAN DI BAWAH INI!</marquee>
+        <marquee scrollamount="6">INFO: DUKUNG SIARAN KAMI VIA DANA 082227473281 — TONTON VAMS TV & NS TV SETIAP HARI — VISIONARY DIGITAL BROADCASTING</marquee>
     </div>
 
-    <div class="logo-utama">
-        <img src="logo.png" alt="Logo" onerror="this.src='https://via.placeholder.com/150?text=APEX';">
+    <div class="header-section">
+        <div class="logo-utama">
+            <img src="logo.png" alt="THE APEX VISIONARY" onerror="this.src='https://via.placeholder.com/150?text=VISIONARY';">
+        </div>
+        <h1>The Apex Visionary</h1>
+        <div id="clock">00:00:00</div>
     </div>
-    
-    <h1>THE APEX VISIONARY</h1>
-    <div id="clock">Memuat Waktu...</div>
 
     <div class="container">
         <div class="card">
-            <h3 style="margin-top:0; color:#ffd700; border-bottom: 1px solid #444; padding-bottom: 10px;">📅 JADWAL ACARA HARI INI</h3>
-            <div class="jadwal-list">
-                • <b>19:00</b> - Live Streaming Utama (VAMS TV)<br>
-                • <b>21:00</b> - Konten Eksklusif (NS TV)<br>
-                • <b>00:00</b> - Late Night Show (Visionary)
-            </div>
+            <h3 class="jadwal-title">📅 JADWAL SIARAN HARI INI</h3>
+            <div class="jadwal-item"><span>19:00 - Live Utama</span> <b>VAMS TV</b></div>
+            <div class="jadwal-item"><span>21:00 - Eksklusif</span> <b>NS TV</b></div>
+            <div class="jadwal-item"><span>00:00 - Late Show</span> <b>VISIONARY</b></div>
         </div>
 
-        <div class="card">
-            <p style="font-size: 12px; color: #888; margin-bottom: 15px;">PILIH STASIUN TV:</p>
-            <a href="https://triyuliansyah588ok.github.io/NSTV/" class="btn ns">MASUK NS TV</a>
-            <a href="https://triyuliansyah588ok.github.io/VAMSTV/" class="btn vams">MASUK VAMS TV</a>
+        <div class="card" style="border-color: #333;">
+            <p style="font-size: 12px; color: #666; margin-bottom: 20px;">SILAKAN PILIH SALURAN:</p>
+            <a href="https://triyuliansyah588ok.github.io/NSTV/" class="btn btn-ns">MASUK NS TV</a>
+            <a href="https://triyuliansyah588ok.github.io/VAMSTV/" class="btn btn-vams">MASUK VAMS TV</a>
         </div>
 
         <div class="card donasi-box">
-            <h4 style="margin:0; color:#ffd700;">☕ DUKUNG OPERASIONAL</h4>
-            <p style="font-size: 11px; color:#aaa; margin-top: 5px;">Bantu siaran kami tetap aktif melalui DANA</p>
-            <div style="font-size: 18px; font-weight:bold; color:#fff; letter-spacing: 1px; margin: 15px 0;">0822-2747-3281</div>
-            <a href="https://link.dana.id/qr/082227473281" target="_blank" class="dana-btn">KIRIM DONASI VIA DANA</a>
+            <p style="color: var(--gold); font-size: 14px; margin: 0;">☕ DUKUNG KREATIFITAS KAMI</p>
+            <div class="dana-num">0822-2747-3281</div>
+            <a href="https://link.dana.id/qr/082227473281" target="_blank" class="dana-btn">KIRIM DANA SEKARANG</a>
         </div>
 
-        <div class="card" style="border: none; background: transparent;">
-            <p style="font-size: 12px; color:#555; margin-bottom: 10px;">IKUTI UPDATE DI FACEBOOK:</p>
-            <a href="https://www.facebook.com/956077827592831" target="_blank" class="fb-btn" style="background:#ff004c;">FACEBOOK NS TV</a>
-            <a href="https://www.facebook.com/971370336066551" target="_blank" class="fb-btn" style="background:#1877F2;">FACEBOOK VAMS TV</a>
+        <div style="width: 100%; margin-top: 10px;">
+            <p style="font-size: 12px; color: #444;">FOLLOW US ON FACEBOOK:</p>
+            <a href="https://www.facebook.com/956077827592831" target="_blank" class="fb-btn" style="background: #ff004c;">FACEBOOK NS TV</a>
+            <a href="https://www.facebook.com/971370336066551" target="_blank" class="fb-btn" style="background: #1877F2;">FACEBOOK VAMS TV</a>
         </div>
+    </div>
+
+    <div class="footer-info">
+        <p>REDAKSI: triyuliansyah588ok@gmail.com</p>
+        <p>© 2026 THE APEX VISIONARY BROADCAST SYSTEM</p>
     </div>
 
     <script>
         function updateClock() {
-            var now = new Date();
-            document.getElementById('clock').innerHTML = "WAKTU SIARAN: " + now.toLocaleTimeString();
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('id-ID', { hour12: false });
+            document.getElementById('clock').innerHTML = "ON-AIR: " + timeString;
         }
         setInterval(updateClock, 1000);
+        updateClock();
     </script>
+
 </body>
 </html>
