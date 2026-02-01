@@ -3,67 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sinetron Eksklusif - Visionary+</title>
+    <title>Sinetron Terkini - Visionary+</title>
     <style>
         body { margin: 0; font-family: 'Segoe UI', sans-serif; background: #000; color: white; }
-        .nav { background: #0f172a; padding: 15px; display: flex; align-items: center; border-bottom: 2px solid #3b82f6; }
-        .nav a { color: white; text-decoration: none; font-weight: bold; }
+        .nav-back { background: #0f172a; padding: 15px; border-bottom: 2px solid #3b82f6; }
+        .nav-back a { color: #3b82f6; text-decoration: none; font-weight: bold; font-size: 14px; }
         
-        /* Area Video Eksklusif */
-        .premium-player { width: 100%; aspect-ratio: 16/9; background: #111; position: relative; }
+        /* Video Player Area */
+        .video-container { width: 100%; aspect-ratio: 16/9; background: #111; }
         iframe { width: 100%; height: 100%; border: none; }
 
-        .content-info { padding: 20px; }
-        .tag-eksklusif { background: gold; color: black; padding: 3px 8px; font-size: 10px; font-weight: bold; border-radius: 4px; }
-        
-        /* Section Segera Tayang */
-        .coming-soon-box { 
-            margin-top: 20px; 
-            background: linear-gradient(45deg, #1e293b, #000); 
-            border: 1px solid #334155; 
-            border-radius: 15px; 
-            padding: 15px;
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
-        .poster-mini { width: 80px; height: 110px; background: #334155; border-radius: 8px; flex-shrink: 0; }
-        .soon-text b { color: #ef4444; font-size: 12px; display: block; margin-bottom: 5px; }
+        .info-box { padding: 20px; }
+        .tag { background: #3b82f6; color: white; padding: 3px 8px; font-size: 10px; border-radius: 4px; font-weight: bold; }
+        h1 { font-size: 20px; margin: 10px 0; }
+        p { color: #94a3b8; font-size: 14px; line-height: 1.5; }
+
+        /* Label Info */
+        .status-box { background: #1e293b; padding: 15px; border-radius: 12px; margin-top: 20px; border-left: 4px solid #ffd700; }
     </style>
 </head>
 <body>
 
-    <div class="nav"><a href="../index.html">‹ KEMBALI</a></div>
-
-    <div class="premium-player">
-        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" allowfullscreen></iframe>
+    <div class="nav-back">
+        <a href="../index.html">← KEMBALI KE BERANDA</a>
     </div>
 
-    <div class="content-info">
-        <span class="tag-eksklusif">WEB EKSKLUSIF</span>
-        <h2 style="margin: 10px 0 5px 0;">Mengejar Takdir - Ep 05</h2>
-        <p style="color: #94a3b8; font-size: 13px;">Konten ini hanya tersedia di website Visionary+. Jangan lewatkan setiap episodenya.</p>
+    <div class="video-container">
+        <iframe 
+            src="https://www.youtube.com/embed?listType=user_uploads&list=vamstv.official01" 
+            allowfullscreen>
+        </iframe>
+    </div>
 
-        <hr style="border: 0; border-top: 1px solid #334155; margin: 25px 0;">
+    <div class="info-box">
+        <span class="tag">VAMS ORIGINAL</span>
+        <h1>Sinetron Unggulan Malam Ini</h1>
+        <p>Selamat menyaksikan tayangan eksklusif dari VAMS TV. Video di atas akan selalu diperbarui otomatis mengikuti unggahan terbaru di channel resmi kami.</p>
 
-        <h3 style="font-size: 16px;">SEGERA TAYANG HANYA DI WEB</h3>
-        
-        <div class="coming-soon-box">
-            <div class="poster-mini" style="background-image: url('https://via.placeholder.com/80x110/3b82f6/fff?text=S1'); background-size: cover;"></div>
-            <div class="soon-text">
-                <b>AKAN DATANG: SENIN</b>
-                <div style="font-size: 14px; font-weight: bold;">Cinta di Ujung Langit</div>
-                <div style="font-size: 11px; color: #94a3b8;">Hanya di Visionary+ Web App</div>
-            </div>
-        </div>
-
-        <div class="coming-soon-box">
-            <div class="poster-mini" style="background-image: url('https://via.placeholder.com/80x110/ef4444/fff?text=S2'); background-size: cover;"></div>
-            <div class="soon-text">
-                <b>AKAN DATANG: JUMAT</b>
-                <div style="font-size: 14px; font-weight: bold;">Misteri NS TV</div>
-                <div style="font-size: 11px; color: #94a3b8;">Edisi Spesial Investigasi</div>
-            </div>
+        <div class="status-box">
+            <div style="font-size: 12px; color: #ffd700; font-weight: bold;">INFO JADWAL</div>
+            <div style="font-size: 14px; margin-top: 5px;">Episode baru tayang setiap hari pukul 19.00 WIB.</div>
         </div>
     </div>
 
