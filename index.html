@@ -5,121 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>THE APEX VISIONARY</title>
     <style>
-        body { background: #fff; color: #333; font-family: Arial, sans-serif; margin: 0; padding: 0; }
+        :root { --primary: #1a237e; --accent: #ffd700; }
+        body { margin: 0; font-family: sans-serif; background: #fff; }
         
-        /* Header & Navigasi */
-        .header { background: #1a237e; color: white; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
-        .header .brand { font-weight: bold; font-size: 18px; }
-        .header .icons { display: flex; gap: 20px; font-size: 22px; cursor: pointer; }
+        /* Landing Page Splash */
+        #splash { position: fixed; top:0; left:0; width:100%; height:100%; background: radial-gradient(circle, #1a237e, #000); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 9999; color: white; transition: 0.8s; }
+        .btn-enter { background: var(--accent); color: #000; padding: 15px 40px; border-radius: 30px; font-weight: bold; border: none; cursor: pointer; margin-top: 20px; }
 
-        /* Dropdown Menu (Titik 3) */
-        .nav-menu { display: none; background: #fff; border-bottom: 2px solid #1a237e; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .nav-menu.active { display: block; animation: slideDown 0.3s ease-out; }
-        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        /* Header & Nav */
+        .header { background: var(--primary); color: white; padding: 15px; display: flex; justify-content: space-between; position: sticky; top: 0; z-index: 1000; }
+        .dropdown { display: none; background: white; position: absolute; top: 55px; right: 0; width: 200px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .dropdown.active { display: block; }
+        .dropdown a { display: block; padding: 15px; color: var(--primary); text-decoration: none; border-bottom: 1px solid #eee; font-weight: bold; }
 
-        .nav-item { display: block; padding: 15px 20px; text-decoration: none; color: #1a237e; border-bottom: 1px solid #eee; font-weight: bold; font-size: 15px; }
-        .nav-item:hover { background: #f5f5f5; }
-
-        /* Area Konten Utama */
-        .logo-section { text-align: center; padding: 20px; }
-        .logo-section img { width: 80px; height: 80px; border-radius: 50%; border: 2px solid #1a237e; }
-
-        .main-content { padding: 0 20px 20px 20px; }
-        .menu-list { border-top: 1px solid #eee; margin-top: 20px; }
-        .menu-link { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; border-bottom: 1px solid #eee; text-decoration: none; color: #1a237e; font-size: 17px; font-weight: 500; }
-        .category-header { background: #f1f3f4; padding: 10px 20px; font-size: 12px; font-weight: bold; color: #5f6368; margin: 15px -20px 0 -20px; }
-
-        /* Tombol Donasi DANA */
-        .dana-link { background: #f8f9fa; border: 1px solid #ddd; border-left: 5px solid #ffd700; padding: 15px; text-decoration: none; display: block; margin-top: 20px; border-radius: 8px; }
-        .dana-num { color: #0077ff; font-weight: bold; font-size: 20px; }
-
-        .footer { text-align: center; padding: 30px; color: #999; font-size: 11px; }
+        /* Content List */
+        .content { padding: 20px; }
+        .category { background: #f1f3f4; padding: 10px; font-size: 12px; font-weight: bold; color: #5f6368; margin: 15px -20px 0 -20px; text-indent: 20px; }
+        .list-item { display: flex; justify-content: space-between; padding: 18px 0; border-bottom: 1px solid #eee; text-decoration: none; color: var(--primary); font-size: 17px; }
+        
+        /* Donasi Box */
+        .dana-box { background: #f8f9fa; border-left: 5px solid var(--accent); padding: 20px; border-radius: 8px; margin: 30px 0; text-decoration: none; display: block; }
+        .footer { text-align: center; color: #999; font-size: 11px; padding: 20px; }
     </style>
 </head>
 <body>
 
-    <div class="header">
-        <div class="brand">VISIONARY</div>
-        <div class="icons">
-            <span onclick="alert('Carian program...')">🔍</span>
-            <span onclick="toggleMenu()">☰</span>
-        </div>
+<div id="splash">
+    <img src="logo.png" width="120" style="border-radius: 50%; border: 3px solid var(--accent);" onerror="this.src='https://via.placeholder.com/120?text=V';">
+    <h1>THE APEX VISIONARY</h1>
+    <button class="btn-enter" onclick="this.parentElement.style.opacity='0'; setTimeout(()=>this.parentElement.remove(), 800)">MASUK PORTAL</button>
+</div>
+
+<div class="header">
+    <div style="font-weight:bold;">VISIONARY</div>
+    <div style="cursor:pointer;" onclick="document.getElementById('menu').classList.toggle('active')">☰</div>
+    <div id="menu" class="dropdown">
+        <a href="program/sinetron.html">🎬 Sinetron</a>
+        <a href="program/webseries.html">💻 Web Series</a>
+        <a href="program/drama.html">🎭 Drama</a>
+        <a href="https://link.dana.id/qr/082227473281">☕ Donasi DANA</a>
     </div>
+</div>
 
-    <div id="navMenu" class="nav-menu">
-        <a href="#" class="nav-item">🏠 Utama</a>
-        <a href="#tentang" class="nav-item">ℹ️ Tentang Kami</a>
-        <a href="#sinetron" class="nav-item">🎬 Sinetron</a>
-        <a href="#webseries" class="nav-item">💻 Web Series</a>
-        <a href="#drama" class="nav-item">🎭 Drama</a>
-        <a href="mailto:triyuliansyah588ok@gmail.com" class="nav-item">✉️ Hubungi Kami</a>
-    </div>
+<div class="content">
+    <div class="category">LIVE STREAMING</div>
+    <a href="https://triyuliansyah588ok.github.io/VAMSTV/" class="list-item">VAMS TV Live <span>›</span></a>
+    <a href="https://triyuliansyah588ok.github.io/NSTV/" class="list-item">NS TV Live <span>›</span></a>
 
-    <div class="logo-section">
-        <img src="logo.png" alt="Logo" onerror="this.src='https://via.placeholder.com/80?text=V';">
-    </div>
+    <div class="category">SINETRON & DRAMA</div>
+    <a href="program/sinetron.html" class="list-item">Mengejar Bayang Neon <span>›</span></a>
+    <a href="program/webseries.html" class="list-item">Cyber Soul 2026 <span>›</span></a>
+    <a href="program/drama.html" class="list-item">Luka Masa Lalu <span>›</span></a>
 
-    <div class="main-content">
-        <h1 style="color:#1a237e; margin:0; font-size: 22px;">The Apex Visionary</h1>
-        <p style="color:#666; font-size: 14px;">Streaming VAMS TV & NS TV</p>
+    <a href="https://link.dana.id/qr/082227473281" target="_blank" class="dana-box">
+        <b style="color:#333">DUKUNG KAMI VIA DANA</b><br>
+        <span style="font-size: 22px; color: #0077ff;">0822 2747 3281</span><br>
+        <small style="color:#666">Klik untuk donasi otomatis</small>
+    </a>
+</div>
 
-        <div class="menu-list">
-            <a href="https://triyuliansyah588ok.github.io/VAMSTV/" class="menu-link">Nonton Live VAMS TV <span>›</span></a>
-            <a href="https://triyuliansyah588ok.github.io/NSTV/" class="menu-link">Nonton Live NS TV <span>›</span></a>
-
-            <div id="sinetron" class="category-header">Sinetron Unggulan</div>
-            <a href="#" class="menu-link">Mengejar Bayang Neon <span>›</span></a>
-            <a href="#" class="menu-link">Rahasia Frekuensi Malam <span>›</span></a>
-            <a href="#" class="menu-link">Cinta di Balik Transmisi <span>›</span></a>
-            <a href="#" class="menu-link">Prahara Apex City <span>›</span></a>
-            <a href="#" class="menu-link">Takdir Sang Penyiar <span>›</span></a>
-
-            <div id="webseries" class="category-header">Web Series Eksklusif</div>
-            <a href="#" class="menu-link">Cyber Soul: Jakarta 2026 <span>›</span></a>
-            <a href="#" class="menu-link">Misteri Kode 588 <span>›</span></a>
-            <a href="#" class="menu-link">Digital Heartbreak <span>›</span></a>
-            <a href="#" class="menu-link">Underground Vision <span>›</span></a>
-            <a href="#" class="menu-link">The Apex Files <span>›</span></a>
-
-            <div id="drama" class="category-header">Drama Pilihan</div>
-            <a href="#" class="menu-link">Luka Masa Lalu <span>›</span></a>
-            <a href="#" class="menu-link">Gema di Ujung Malam <span>›</span></a>
-            <a href="#" class="menu-link">Janji di Atas Menara <span>›</span></a>
-            <a href="#" class="menu-link">Sisi Lain Cahaya <span>›</span></a>
-            <a href="#" class="menu-link">Arus Waktu <span>›</span></a>
-        </div>
-
-        <a href="https://link.dana.id/qr/082227473281" class="dana-link">
-            <span style="color:#333; font-weight:bold; font-size: 14px;">☕ DUKUNG KAMI VIA DANA</span><br>
-            <span class="dana-num">0822 2747 3281</span><br>
-            <span style="font-size: 11px; color: #0077ff;">Klik untuk transfer donasi otomatis</span>
-        </a>
-    </div>
-
-    <div class="footer">
-        © 2026 THE APEX VISIONARY BROADCAST SYSTEM
-    </div>
-
-    <script>
-        function toggleMenu() {
-            var menu = document.getElementById("navMenu");
-            if (menu.classList.contains("active")) {
-                menu.classList.remove("active");
-            } else {
-                menu.classList.add("active");
-            }
-        }
-        
-        // Menutup menu jika mengklik di luar menu
-        window.onclick = function(event) {
-            if (!event.target.matches('span')) {
-                var menu = document.getElementById("navMenu");
-                if (menu.classList.contains("active")) {
-                    menu.classList.remove("active");
-                }
-            }
-        }
-    </script>
-
+<div class="footer">© 2026 THE APEX VISIONARY</div>
 </body>
 </html>
