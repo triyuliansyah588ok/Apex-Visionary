@@ -3,33 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Drama Pilihan - Visionary</title>
+    <title>Drama - Visionary+</title>
     <style>
-        body { margin: 0; font-family: sans-serif; background: #fff; color: #333; }
-        .header { background: #c2185b; color: white; padding: 15px; display: flex; align-items: center; gap: 15px; }
-        .header a { color: white; text-decoration: none; font-size: 24px; }
-        .drama-list { padding: 0; margin: 0; list-style: none; }
-        .drama-item { padding: 20px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
-        .drama-item:active { background: #fdf2f8; }
-        .drama-title { font-weight: bold; color: #c2185b; }
-        .arrow-pink { color: #c2185b; font-weight: bold; }
+        body { margin: 0; font-family: 'Segoe UI', sans-serif; background: #000; color: white; }
+        .nav { background: #0f172a; padding: 15px; border-bottom: 2px solid #ffd700; }
+        .nav a { color: white; text-decoration: none; font-weight: bold; }
+        
+        .video-frame { width: 100%; aspect-ratio: 16/9; background: #111; }
+        iframe { width: 100%; height: 100%; border: none; }
+
+        .details { padding: 20px; }
+        .badge { background: #ffd700; color: #000; padding: 4px 10px; border-radius: 5px; font-size: 11px; font-weight: bold; }
+        h1 { font-size: 22px; margin: 15px 0 10px 0; }
+        p { color: #94a3b8; font-size: 14px; line-height: 1.6; }
+
+        .schedule { background: #111; padding: 15px; border-radius: 12px; margin-top: 20px; border: 1px dashed #ffd700; }
     </style>
 </head>
 <body>
-    <div class="header"><a href="../index.html">‹</a> <b>DRAMA PILIHAN</b></div>
-    <div class="drama-list">
-        <div class="drama-item">
-            <div class="drama-title">Luka Masa Lalu</div>
-            <div class="arrow-pink">›</div>
-        </div>
-        <div class="drama-item">
-            <div class="drama-title">Gema di Ujung Malam</div>
-            <div class="arrow-pink">›</div>
-        </div>
-        <div class="drama-item">
-            <div class="drama-title">Takdir Sang Visioner</div>
-            <div class="arrow-pink">›</div>
+
+    <div class="nav"><a href="../index.html">← KEMBALI</a></div>
+
+    <div class="video-frame">
+        <iframe src="https://www.youtube.com/embed?listType=user_uploads&list=vamstv.official01" allowfullscreen></iframe>
+    </div>
+
+    <div class="details">
+        <span class="badge">VAMS DRAMA</span>
+        <h1>Drama Pilihan Visionary+</h1>
+        <p>Kisah-kisah inspiratif dan penuh emosi dari VAMS TV. Temukan makna hidup dalam setiap tayangan drama eksklusif kami.</p>
+
+        <div class="schedule">
+            <div style="font-weight: bold; font-size: 14px; color: #ffd700;">JADWAL TAYANG</div>
+            <div style="font-size: 13px; margin-top: 5px;">Setiap Malam Jumat pukul 20:00 WIB</div>
         </div>
     </div>
+
 </body>
 </html>
