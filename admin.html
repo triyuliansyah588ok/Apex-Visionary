@@ -3,33 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profil Admin - Visionary+</title>
+    <title>Profil CEO - THE APEX VISIONARY</title>
     <style>
-        body { margin: 0; font-family: 'Segoe UI', sans-serif; background: #000; color: white; display: flex; align-items: center; justify-content: center; height: 100vh; }
-        .card { background: #0f172a; width: 85%; max-width: 380px; border-radius: 30px; border: 1px solid #1e293b; padding: 40px 20px; text-align: center; }
-        #ceoPhoto { width: 140px; height: 140px; border-radius: 50%; border: 4px solid gold; object-fit: cover; margin-bottom: 20px; background: #222; }
-        h1 { margin: 0; font-size: 24px; }
-        .title { color: gold; font-size: 11px; font-weight: bold; letter-spacing: 2px; margin: 10px 0 30px; }
-        .btn-logout { display: block; padding: 12px; background: #ef4444; color: white; text-decoration: none; border-radius: 12px; font-weight: bold; margin-top: 10px; }
+        :root { --gold: #ffd700; --dark: #0f172a; --accent: #3b82f6; }
+        body { margin: 0; font-family: 'Segoe UI', sans-serif; background: #000; color: white; display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+        .card { background: var(--dark); width: 85%; max-width: 380px; border-radius: 30px; border: 1px solid #1e293b; padding: 40px 20px; text-align: center; box-shadow: 0 0 30px rgba(59, 130, 246, 0.2); }
+        
+        /* Frame Foto CEO */
+        .photo-container { position: relative; width: 140px; height: 140px; margin: 0 auto 20px; }
+        #ceoPhoto { width: 100%; height: 100%; border-radius: 50%; border: 4px solid var(--gold); object-fit: cover; background: #222; }
+        
+        /* Tombol Ganti Foto Kecil */
+        .change-photo-btn { position: absolute; bottom: 5px; right: 5px; background: var(--accent); border: none; width: 35px; height: 35px; border-radius: 50%; color: white; cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center; border: 2px solid var(--dark); }
+
+        h1 { margin: 10px 0 5px 0; font-size: 24px; }
+        .title { color: var(--gold); font-size: 11px; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 25px; }
+        .bio { font-size: 14px; color: #94a3b8; line-height: 1.6; margin-bottom: 30px; }
+        
+        .btn-action { display: block; padding: 12px; border-radius: 12px; text-decoration: none; font-weight: bold; margin-bottom: 10px; font-size: 14px; }
+        .btn-blue { background: var(--accent); color: white; }
+        .btn-red { background: #ef4444; color: white; }
     </style>
 </head>
 <body>
+
     <div class="card">
-        <img id="ceoPhoto" src="" alt="CEO Visionary">
+        <div class="photo-container">
+            <img id="ceoPhoto" src="" alt="Klik ikon + untuk unggah foto">
+            <input type="file" id="fileInput" hidden accept="image/*" onchange="uploadFoto(this)">
+            <button class="change-photo-btn" onclick="document.getElementById('fileInput').click()">+</button>
+        </div>
+
         <h1>M Ramadhan</h1>
-        <div class="title">CEO & FOUNDER - THE APEX VISIONARY</div>
+        <div class="title">CEO & Founder - THE APEX VISIONARY</div>
+        <div class="bio">"Membangun masa depan media digital Indonesia melalui inovasi tanpa batas di Visionary+."</div>
         
-        <a href="index.html" style="display:block; padding:12px; background:#3b82f6; color:white; border-radius:12px; text-decoration:none; font-weight:bold;">KEMBALI KE BERANDA</a>
-        <a href="#" onclick="localStorage.clear(); location.href='login.html';" class="btn-logout">KELUAR (LOGOUT)</a>
+        <a href="index.html" class="btn-action btn-blue">KEMBALI KE BERANDA</a>
+        <a href="#" onclick="logout()" class="btn-action btn-red">KELUAR (LOGOUT)</a>
     </div>
 
     <script>
-        // Mengambil foto dari memori HP
-        const fotoData = localStorage.getItem("fotoCEO");
-        if(fotoData) {
-            document.getElementById('ceoPhoto').src = fotoData;
-        } else {
-            document.getElementById('ceoPhoto').alt = "Foto Belum Diunggah";
+        // 1. Fungsi Menampilkan Foto yang Sudah Disimpan
+        window.onload = function() {
+            const savedFoto = localStorage.getItem("fotoCEO");
+            if(savedFoto) {
+                document.getElementById('ceoPhoto').src = savedFoto;
+            }
+        };
+
+        // 2. Fungsi Unggah & Simpan Foto Permanen
+        function uploadFoto(input) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const base64 = e.target.result;
+                localStorage.setItem("fotoCEO", base64); // Simpan di memori HP
+                document.getElementById('ceoPhoto').src = base64; // Langsung tampilkan
+                alert("Foto CEO Berhasil Diperbarui, Pak!");
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+
+        function logout() {
+            localStorage.clear();
+            window.location.href = "login.html";
         }
     </script>
 </body>
