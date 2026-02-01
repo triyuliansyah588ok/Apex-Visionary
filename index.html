@@ -3,54 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visionary+ | Official</title>
+    <title>Visionary+ Home</title>
     <script>
         if (localStorage.getItem("isLoggedIn") !== "true") { window.location.href = "login.html"; }
     </script>
     <style>
-        :root { --gold: #ffd700; --accent: #3b82f6; --red: #ef4444; }
         body { margin: 0; font-family: 'Segoe UI', sans-serif; background: #000; color: white; }
-        .header { background: rgba(15,23,42,0.9); padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; position: sticky; top:0; z-index:100; border-bottom: 1px solid #1e293b; backdrop-filter: blur(10px); }
-        .brand { font-size: 22px; font-weight: 900; color: var(--gold); letter-spacing: 1px; }
-        .banner { width: 100%; height: 230px; background: linear-gradient(to bottom, transparent, #000), url('https://via.placeholder.com/500x300/1e293b/fff?text=Visionary+Originals'); background-size: cover; display: flex; align-items: flex-end; padding: 20px; box-sizing: border-box; }
-        .section { padding: 20px 0 20px 20px; }
-        .section-title { font-size: 14px; font-weight: bold; margin-bottom: 15px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; }
-        .scroll-container { display: flex; overflow-x: auto; gap: 15px; padding-right: 20px; scrollbar-width: none; }
-        .poster { min-width: 140px; height: 200px; background: #111; border-radius: 12px; position: relative; border: 1px solid #1e293b; overflow: hidden; }
-        .tag { position: absolute; top: 8px; left: 8px; padding: 3px 8px; font-size: 10px; font-weight: bold; border-radius: 5px; background: var(--red); }
-        .tv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding: 0 20px 30px 20px; }
-        .tv-card { padding: 25px 10px; border-radius: 15px; text-align: center; text-decoration: none; color: white; border: 1px solid #1e293b; background: #0f172a; font-weight: bold; font-size: 14px; }
+        .header { background: #0f172a; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1e293b; }
+        .brand { font-size: 20px; font-weight: 900; color: gold; }
+        .admin-btn { display: none; cursor: pointer; font-size: 24px; }
+        /* Style lainnya tetap sama seperti sebelumnya */
     </style>
 </head>
 <body>
 
     <div class="header">
         <div class="brand">VISIONARY+</div>
-        <div onclick="location.href='admin.html'" style="cursor:pointer; font-size: 24px;">👤</div>
+        <div id="ceoIcon" class="admin-btn" onclick="location.href='admin.html'">👤</div>
+        <div id="userLogout" style="font-size: 20px;" onclick="localStorage.clear(); location.reload();">🚪</div>
     </div>
 
-    <div class="banner">
-        <div>
-            <div style="font-size: 12px; color: var(--gold); font-weight: bold;">TRENDING SEKARANG</div>
-            <div style="font-size: 24px; font-weight: 900;">JAKARTA 2026</div>
-        </div>
-    </div>
+    <script>
+        // Cek Role setelah Login
+        const role = localStorage.getItem("role");
+        if (role === "CEO") {
+            document.getElementById("ceoIcon").style.display = "block";
+            document.getElementById("userLogout").style.display = "none";
+        }
+    </script>
 
-    <div class="section">
-        <div class="section-title">Kategori Unggulan</div>
-        <div class="tv-grid">
-            <a href="program/sinetron.html" class="tv-card">🎬 SINETRON</a>
-            <a href="program/webseries.html" class="tv-card">💻 WEB SERIES</a>
-        </div>
-    </div>
-
-    <div class="section">
-        <div class="section-title">Baru & Segera Tayang</div>
-        <div class="scroll-container">
-            <div class="poster"><span class="tag">HOT</span><div style="margin-top:160px; padding:10px; font-size:12px; font-weight:bold;">VAMS Special</div></div>
-            <div class="poster" style="border-color: var(--accent);"><span class="tag" style="background:var(--accent)">SOON</span><div style="margin-top:160px; padding:10px; font-size:12px; font-weight:bold;">NS Investigasi</div></div>
-        </div>
-    </div>
-
-</body>
+    </body>
 </html>
