@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Visionary+</title>
+    <title>Login - Visionary+</title>
     <style>
         body { margin: 0; font-family: 'Segoe UI', sans-serif; background: #000; color: white; display: flex; align-items: center; justify-content: center; height: 100vh; }
         .card { background: #111; padding: 35px 25px; border-radius: 25px; border: 1px solid #1e293b; width: 85%; max-width: 350px; text-align: center; }
@@ -17,26 +17,30 @@
         <input type="text" id="lUser" placeholder="Username">
         <input type="password" id="lPass" placeholder="Password">
         <button class="btn" onclick="login()">MASUK</button>
-        <p style="font-size: 12px; margin-top: 20px;">Belum punya akun? <a href="daftar.html" style="color: #3b82f6;">Daftar</a></p>
+        <p style="font-size: 12px; margin-top: 20px;">Belum punya akun? <a href="daftar.html" style="color: #3b82f6; text-decoration: none;">Daftar</a></p>
     </div>
     <script>
         function login() {
             const u = document.getElementById('lUser').value;
             const p = document.getElementById('lPass').value;
-            const savedP = localStorage.getItem("user_" + u);
-
-            // LOGIKA CEO (Username Bapak: Ramadhan)
+            
+            // AKUN KHUSUS BAPAK (CEO)
             if (u === "Ramadhan" && p === "admin123") {
                 localStorage.setItem("isLoggedIn", "true");
-                localStorage.setItem("role", "CEO");
+                localStorage.setItem("userRole", "CEO");
                 window.location.href = "index.html";
             } 
-            // LOGIKA PENONTON
-            else if (savedP === p && p !== null) {
-                localStorage.setItem("isLoggedIn", "true");
-                localStorage.setItem("role", "penonton");
-                window.location.href = "index.html";
-            } else { alert("Login Gagal!"); }
+            // AKUN PENONTON
+            else {
+                const savedP = localStorage.getItem("user_" + u);
+                if (savedP === p && p !== null) {
+                    localStorage.setItem("isLoggedIn", "true");
+                    localStorage.setItem("userRole", "penonton");
+                    window.location.href = "index.html";
+                } else {
+                    alert("Maaf, akun tidak ditemukan atau password salah!");
+                }
+            }
         }
     </script>
 </body>
