@@ -3,28 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CEO Profil - M Ramadhan</title>
+    <title>CEO Profil | M Ramadhan</title>
     <style>
-        :root { --gold: #ffd700; --dark: #0f172a; --accent: #3b82f6; }
         body { margin: 0; font-family: 'Segoe UI', sans-serif; background: #000; color: white; display: flex; align-items: center; justify-content: center; min-height: 100vh; }
-        .card { background: var(--dark); width: 85%; max-width: 380px; border-radius: 30px; border: 1px solid #1e293b; padding: 40px 20px; text-align: center; box-shadow: 0 0 30px rgba(59, 130, 246, 0.2); }
-        .ceo-photo { width: 140px; height: 140px; border-radius: 50%; border: 4px solid var(--gold); object-fit: cover; margin-bottom: 20px; }
-        h1 { margin: 10px 0 5px 0; font-size: 24px; letter-spacing: 1px; }
-        .title { color: var(--gold); font-size: 11px; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; }
-        .bio { font-size: 14px; color: #94a3b8; line-height: 1.6; margin-bottom: 25px; }
-        .btn-wa { display: block; padding: 12px; background: #25d366; color: white; text-decoration: none; border-radius: 12px; font-weight: bold; margin-bottom: 10px; }
-        .btn-back { display: block; padding: 12px; background: var(--accent); color: white; text-decoration: none; border-radius: 12px; font-weight: bold; }
+        .card { background: #0f172a; width: 85%; max-width: 380px; border-radius: 30px; border: 1px solid #1e293b; padding: 40px 20px; text-align: center; box-shadow: 0 0 30px rgba(59, 130, 246, 0.2); }
+        .photo { width: 140px; height: 140px; border-radius: 50%; border: 4px solid gold; object-fit: cover; margin-bottom: 20px; }
+        h1 { margin: 10px 0 5px 0; font-size: 24px; }
+        .title { color: gold; font-size: 11px; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 25px; }
+        .bio { font-size: 14px; color: #94a3b8; line-height: 1.6; margin-bottom: 30px; }
+        .btn-back { display: block; padding: 12px; background: #3b82f6; color: white; text-decoration: none; border-radius: 12px; font-weight: bold; }
+        .btn-logout { display: block; padding: 12px; background: #ef4444; color: white; text-decoration: none; border-radius: 12px; font-weight: bold; margin-top: 10px; font-size: 14px; }
     </style>
 </head>
 <body>
     <div class="card">
-        <img src="IMG_20260129_175803_586.webp" alt="M Ramadhan" class="ceo-photo">
+        <img src="IMG_20260129_175803_586.webp" alt="M Ramadhan" class="photo">
         <h1>M Ramadhan</h1>
         <div class="title">CEO & Founder - THE APEX VISIONARY</div>
         <div class="bio">"Membangun masa depan media digital Indonesia melalui inovasi tanpa batas di Visionary+."</div>
-        
-        <a href="https://wa.me/628XXXXXXXXXX" class="btn-wa">HUBUNGI CEO</a>
         <a href="index.html" class="btn-back">KEMBALI KE BERANDA</a>
+        <a href="#" onclick="localStorage.clear(); location.href='login.html';" class="btn-logout">KELUAR (LOGOUT)</a>
     </div>
 </body>
 </html>
