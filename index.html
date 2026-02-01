@@ -3,71 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VISIONARY+ | Official Media Hub</title>
+    <title>Visionary+ Home</title>
+    <script>
+        if (localStorage.getItem("isLoggedIn") !== "true") { window.location.href = "login.html"; }
+    </script>
     <style>
-        :root { --primary: #0f172a; --accent: #3b82f6; --gold: #ffd700; --red: #ff0000; }
+        :root { --accent: #3b82f6; --red: #ef4444; }
         body { margin: 0; font-family: 'Segoe UI', sans-serif; background: #000; color: white; }
         
-        .header { background: rgba(15,23,42,0.95); padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; position: sticky; top:0; z-index:100; border-bottom: 2px solid #1e293b; backdrop-filter: blur(10px); }
-        .brand { font-size: 22px; font-weight: 900; background: linear-gradient(90deg, #ffd700, #fff, #ffd700); background-size: 200%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: shine 3s infinite linear; letter-spacing: 2px; }
-        @keyframes shine { to { background-position: 200% center; } }
-
-        .section { padding: 20px; }
-        .section-title { font-size: 11px; font-weight: bold; color: #94a3b8; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 2px; }
+        /* Header */
+        .header { background: rgba(0,0,0,0.8); padding: 15px 20px; display: flex; justify-content: space-between; position: sticky; top:0; z-index:100; backdrop-filter: blur(10px); }
+        .brand { font-size: 20px; font-weight: 900; color: #ffd700; }
         
-        .tv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 25px; }
-        .tv-card { background: #1e293b; padding: 20px; border-radius: 18px; text-align: center; text-decoration: none; color: white; border: 1px solid #334155; position: relative; transition: 0.3s; }
-        .tv-card:active { transform: scale(0.95); }
+        /* Horizontal Scroll */
+        .section { padding: 20px 0 20px 20px; }
+        .section-title { font-size: 14px; font-weight: bold; margin-bottom: 15px; color: #94a3b8; text-transform: uppercase; }
+        .scroll-container { display: flex; overflow-x: auto; gap: 15px; padding-right: 20px; scrollbar-width: none; }
+        .scroll-container::-webkit-scrollbar { display: none; }
         
-        .vams-border { border-bottom: 4px solid var(--accent); }
-        .ns-border { border-bottom: 4px solid var(--red); }
-        
-        .live-tag { position: absolute; top: 10px; right: 10px; background: var(--red); color: white; font-size: 9px; padding: 2px 6px; border-radius: 4px; font-weight: bold; animation: pulse 1.5s infinite; }
-        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+        /* Card Segera Tayang */
+        .poster { min-width: 140px; height: 200px; background: #1e293b; border-radius: 12px; position: relative; overflow: hidden; border: 1px solid #334155; }
+        .tag { position: absolute; top: 8px; left: 8px; padding: 3px 7px; font-size: 9px; font-weight: bold; border-radius: 4px; }
+        .tag.hot { background: var(--red); }
+        .tag.soon { background: var(--accent); }
+        .poster-info { position: absolute; bottom: 0; padding: 10px; background: linear-gradient(transparent, rgba(0,0,0,0.9)); width: 100%; box-sizing: border-box; }
+        .poster-info div { font-size: 11px; font-weight: bold; }
 
-        .menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-        .menu-item { background: #111b27; padding: 20px 10px; border-radius: 15px; text-align: center; text-decoration: none; color: white; font-size: 12px; border: 1px solid #1e293b; font-weight: bold; }
-        .menu-item span { font-size: 24px; display: block; margin-bottom: 8px; }
-
-        .footer { text-align: center; padding: 40px; color: #475569; font-size: 10px; letter-spacing: 1px; }
+        /* Channel Buttons */
+        .tv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding: 0 20px; }
+        .tv-card { padding: 20px; border-radius: 15px; text-align: center; text-decoration: none; color: white; font-weight: bold; border: 1px solid #334155; }
     </style>
 </head>
 <body>
 
     <div class="header">
         <div class="brand">VISIONARY+</div>
-        <div onclick="location.href='admin.html'" style="cursor:pointer; font-size: 20px;">👤</div>
+        <div onclick="localStorage.clear(); location.reload();">🚪</div>
     </div>
 
     <div class="section">
-        <div class="section-title">Official TV Channels</div>
-        <div class="tv-grid">
-            <a href="https://youtube.com/@vamstv.official01?si=Yol6pOrihje4UsAl" target="_blank" class="tv-card vams-border">
-                <span class="live-tag">LIVE</span>
-                <div style="font-size:30px;">📺</div>
-                <div style="font-weight:900; margin-top:10px; font-size:16px;">VAMS TV</div>
-                <div style="font-size:10px; color:#94a3b8; margin-top:5px;">YouTube Channel</div>
-            </a>
-
-            <a href="https://www.youtube.com/@nstv.officiall" target="_blank" class="tv-card ns-border">
-                <span class="live-tag" style="background: #3b82f6;">NEW</span>
-                <div style="font-size:30px;">📡</div>
-                <div style="font-weight:900; margin-top:10px; font-size:16px;">NS TV</div>
-                <div style="font-size:10px; color:#94a3b8; margin-top:5px;">YouTube Channel</div>
-            </a>
-        </div>
-
-        <div class="section-title">Kategori Program</div>
-        <div class="menu-grid">
-            <a href="program/sinetron.html" class="menu-item"><span>🎬</span>Sinetron</a>
-            <a href="program/webseries.html" class="menu-item"><span>💻</span>Series</a>
-            <a href="program/drama.html" class="menu-item"><span>🎭</span>Drama</a>
+        <div class="section-title">Baru & Segera Tayang</div>
+        <div class="scroll-container">
+            <div class="poster" style="background-image: url('https://via.placeholder.com/140x200/3b82f6/fff?text=Sinetron'); background-size: cover;">
+                <span class="tag hot">HOT</span>
+                <div class="poster-info"><div>Cinta di VAMS</div></div>
+            </div>
+            <div class="poster" style="background-image: url('https://via.placeholder.com/140x200/ef4444/fff?text=Action'); background-size: cover;">
+                <span class="tag soon">SENIN</span>
+                <div class="poster-info"><div>Misteri NS TV</div></div>
+            </div>
+            <div class="poster" style="background-image: url('https://via.placeholder.com/140x200/ffd700/000?text=Series'); background-size: cover;">
+                <span class="tag soon">JUMAT</span>
+                <div class="poster-info"><div>The Apex War</div></div>
+            </div>
         </div>
     </div>
 
-    <div class="footer">
-        <p>POWERED BY THE APEX VISIONARY GROUP</p>
-        <p>Banten, Indonesia © 2026</p>
+    <div class="section-title" style="padding-left: 20px;">Official Channels</div>
+    <div class="tv-grid">
+        <a href="https://youtube.com/@vamstv.official01" target="_blank" class="tv-card" style="background: linear-gradient(to bottom, #1e293b, #0f172a); border-top: 3px solid var(--accent);">
+            VAMS TV
+        </a>
+        <a href="https://www.youtube.com/@nstv.officiall" target="_blank" class="tv-card" style="background: linear-gradient(to bottom, #1e293b, #0f172a); border-top: 3px solid var(--red);">
+            NS TV
+        </a>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Kategori</div>
+        <div class="tv-grid">
+            <a href="program/sinetron.html" class="tv-card">🎬 Sinetron</a>
+            <a href="program/webseries.html" class="tv-card">💻 Series</a>
+        </div>
     </div>
 
 </body>
