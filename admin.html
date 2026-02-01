@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Visionary</title>
+    <style>
+        body { font-family: sans-serif; background: #121212; color: #00ff00; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .login-box { border: 1px solid #00ff00; padding: 30px; border-radius: 10px; text-align: center; background: #000; box-shadow: 0 0 20px rgba(0,255,0,0.2); }
+        input { background: #111; border: 1px solid #00ff00; color: #00ff00; padding: 10px; width: 80%; margin: 10px 0; outline: none; }
+        button { background: #00ff00; color: #000; border: none; padding: 10px 20px; cursor: pointer; font-weight: bold; width: 100%; }
+        button:hover { background: #00cc00; }
+    </style>
+</head>
+<body>
+    <div class="login-box">
+        <h3>VISIONARY DATABASE</h3>
+        <p style="font-size:12px;">Masukkan Kode Akses Developer</p>
+        <input type="password" id="pass" placeholder="Password">
+        <button onclick="login()">MASUK SISTEM</button>
+    </div>
+
+    <script>
+        function login() {
+            var p = document.getElementById("pass").value;
+            if(p === "visionary2026") {
+                alert("Akses Diterima! Menghubungkan ke server...");
+                window.location.href = "index.html";
+            } else {
+                alert("Akses Ditolak! Percobaan ilegal tercatat.");
+            }
+        }
+    </script>
+</body>
+</html>
