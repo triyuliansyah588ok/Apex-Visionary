@@ -5,22 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web Series - Visionary+</title>
     <style>
-        body { margin: 0; font-family: sans-serif; background: #000; color: white; }
-        .nav { background: #006064; padding: 15px; display: flex; align-items: center; gap: 10px; }
-        .nav a { color: white; text-decoration: none; font-size: 20px; }
-        .player { width: 100%; aspect-ratio: 16/9; }
-        .info { padding: 20px; }
-        .title { font-size: 20px; font-weight: bold; color: #00bcd4; }
+        body { margin: 0; font-family: 'Segoe UI', sans-serif; background: #000; color: white; }
+        .nav { background: #0f172a; padding: 15px; border-bottom: 2px solid #ef4444; }
+        .nav a { color: white; text-decoration: none; font-weight: bold; }
+        
+        .video-frame { width: 100%; aspect-ratio: 16/9; background: #111; }
+        iframe { width: 100%; height: 100%; border: none; }
+
+        .details { padding: 20px; }
+        .badge { background: #ef4444; padding: 4px 10px; border-radius: 5px; font-size: 11px; font-weight: bold; }
+        h1 { font-size: 22px; margin: 15px 0 10px 0; color: #fff; }
+        p { color: #94a3b8; font-size: 14px; line-height: 1.6; }
+
+        .coming-soon { margin-top: 30px; border-top: 1px solid #1e293b; padding-top: 20px; }
+        .card-soon { background: #0f172a; padding: 15px; border-radius: 12px; display: flex; align-items: center; gap: 15px; border: 1px solid #1e293b; }
     </style>
 </head>
 <body>
-    <div class="nav"><a href="../index.html">‹</a> <b>WEB SERIES EXCLUSIVE</b></div>
-    <div class="player">
-        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/6m7z9YvE_fM" frameborder="0" allowfullscreen></iframe>
+
+    <div class="nav"><a href="../index.html">← KEMBALI</a></div>
+
+    <div class="video-frame">
+        <iframe src="https://www.youtube.com/embed?listType=user_uploads&list=nstv.officiall" allowfullscreen></iframe>
     </div>
-    <div class="info">
-        <div class="title">Jakarta 2026: Masa Depan Teknologi</div>
-        <p style="color:#94a3b8;">Eksplorasi visual masa depan yang disukai jutaan orang di dunia.</p>
+
+    <div class="details">
+        <span class="badge">NS ORIGINAL SERIES</span>
+        <h1>Koleksi Web Series Terbaru</h1>
+        <p>Tonton episode terbaru dari NS TV langsung di sini. Kami menghadirkan cerita yang lebih berani dan modern setiap minggunya.</p>
+
+        <div class="coming-soon">
+            <h3 style="font-size: 14px; color: #ef4444;">SEGERA TAYANG</h3>
+            <div class="card-soon">
+                <div style="font-size: 30px;">🎬</div>
+                <div>
+                    <div style="font-weight: bold; font-size: 14px;">Misteri Sesi 2</div>
+                    <div style="font-size: 12px; color: #94a3b8;">Tayang Senin Depan</div>
+                </div>
+            </div>
+        </div>
     </div>
+
 </body>
 </html>
