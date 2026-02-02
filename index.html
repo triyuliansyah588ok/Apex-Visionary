@@ -3,146 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VisionaryPlus - Official Platform</title>
+    <title>VisionaryPlus - Official Premium</title>
     <style>
-        body { background-color: #0b0b0b; color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; margin: 0; padding: 20px; }
+        /* Tampilan Mewah VisionaryPlus */
+        body { background-color: #050505; color: #ffffff; font-family: 'Arial', sans-serif; text-align: center; margin: 0; padding: 20px; user-select: none; }
         .hidden { display: none; }
-        .box { background: #1a1a1a; padding: 30px; border-radius: 20px; border: 1px solid #333; margin: 20px auto; max-width: 500px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        input { width: 90%; padding: 15px; margin: 10px 0; border-radius: 10px; border: 1px solid #444; background: #222; color: white; font-size: 16px; }
-        button { width: 95%; padding: 15px; border-radius: 10px; border: none; font-weight: bold; cursor: pointer; transition: 0.3s; font-size: 16px; }
-        .btn-gold { background: linear-gradient(45deg, #facc15, #eab308); color: black; margin-top: 10px; }
-        .btn-gold:hover { transform: scale(1.02); }
-        .btn-vip { background: linear-gradient(45deg, #f87171, #ef4444); color: white; }
-        .card { border: 1px solid #333; padding: 20px; border-radius: 15px; margin: 15px 0; background: #222; }
-        .price { font-size: 24px; font-weight: bold; color: #facc15; margin: 10px 0; }
-        .badge { background: #4ade80; color: black; padding: 5px 15px; border-radius: 20px; font-size: 12px; font-weight: bold; }
+        .box { background: #111; padding: 30px; border-radius: 20px; border: 1px solid #222; margin: 20px auto; max-width: 450px; box-shadow: 0 15px 50px rgba(0,0,0,0.8); }
+        h1 { font-size: 28px; letter-spacing: 4px; color: #fff; }
+        h1 span { color: #facc15; }
+        input { width: 90%; padding: 15px; margin: 10px 0; border-radius: 12px; border: 1px solid #333; background: #1a1a1a; color: white; font-size: 16px; outline: none; }
+        input:focus { border-color: #facc15; }
+        button { width: 95%; padding: 15px; border-radius: 12px; border: none; font-weight: bold; cursor: pointer; transition: 0.3s; font-size: 16px; margin-top: 10px; }
+        .btn-gold { background: linear-gradient(45deg, #facc15, #b45309); color: black; }
+        .btn-gold:hover { opacity: 0.9; transform: translateY(-2px); }
+        .btn-outline { background: transparent; border: 1px solid #444; color: #888; margin-top: 20px; }
+        .card { border: 1px solid #222; padding: 20px; border-radius: 15px; margin: 15px 0; background: #151515; }
+        .price { font-size: 26px; font-weight: bold; color: #facc15; margin: 5px 0; }
+        .video-container { position:relative; padding-top:56.25%; background: #000; border-radius: 15px; overflow: hidden; box-shadow: 0 0 20px rgba(250, 204, 21, 0.2); }
     </style>
 </head>
-<body>
-
-    <h1 style="letter-spacing: 2px;">VISIONARY<span style="color: #facc15;">PLUS</span></h1>
+<body oncontextmenu="return false;"> <h1>VISIONARY<span>PLUS</span></h1>
 
     <div id="auth-section" class="box">
-        <h2 style="margin-top:0;">Selamat Datang</h2>
-        <p style="color: #aaa;">Silakan masuk untuk mengakses konten premium</p>
-        <input type="text" id="username" placeholder="Masukkan Nama atau Email">
-        <button class="btn-gold" onclick="handleAuth()">MASUK SEKARANG</button>
-        <p style="font-size: 12px; color: #555; margin-top: 20px;">© 2024 VisionaryPlus Corporation</p>
+        <h2 style="margin-top:0;">Member Access</h2>
+        <p style="color: #666;">Silakan masuk untuk akses video eksklusif</p>
+        <input type="text" id="username" placeholder="Masukkan Nama Member">
+        <button class="btn-gold" onclick="handleAuth()">MASUK KE PLATFORM</button>
+        <p style="font-size: 10px; color: #444; margin-top: 30px;">PROTECTED BY VISIONARY CORP SECURE SYSTEM</p>
     </div>
 
     <div id="subscription-section" class="hidden box">
         <h3 id="welcome-msg" style="color: #facc15;"></h3>
-        <div style="border: 2px solid #f87171; padding: 15px; border-radius: 15px; background: rgba(248, 113, 113, 0.1);">
-            <h2 style="color: #f87171; margin: 0;">AKSES TERKUNCI</h2>
-            <p>Pilih paket langganan untuk membuka video</p>
-        </div>
+        <p style="color: #ff4d4d; font-weight: bold; border: 1px solid #ff4d4d; padding: 10px; border-radius: 10px;">AKSES VIP BELUM AKTIF</p>
         
         <div class="card">
-            <span class="badge">POPULER</span>
-            <h4>SILVER (1 BULAN)</h4>
+            <h4 style="margin:0;">PAKET SILVER (1 BULAN)</h4>
             <div class="price">Rp 60.000</div>
             <a href="https://saweria.co/VisionaryPlus" target="_blank" style="text-decoration:none;">
-                <button class="btn-gold">BELI VIA SAWERIA</button>
+                <button class="btn-gold">AKTIFKAN SEKARANG</button>
             </a>
         </div>
 
-        <div class="card" style="border-color: #facc15;">
-            <h4>LEGEND (3 TAHUN)</h4>
-            <div class="price">Rp 4.000.000</div>
-            <a href="https://saweria.co/VisionaryPlus" target="_blank" style="text-decoration:none;">
-                <button class="btn-vip">AMBIL PAKET SULTAN</button>
-            </a>
-        </div>
-        
-        <div style="margin-top: 30px; border-top: 1px solid #333; padding-top: 20px;">
-            <p style="font-size: 14px;">Sudah bayar? Masukkan kode dari Saweria:</p>
-            <input type="text" id="access-code" placeholder="Contoh: APEX2">
-            <button class="btn-gold" onclick="checkCode()" style="background: #444; color: white;">AKTIFKAN VIP</button>
+        <div style="margin-top: 20px;">
+            <p style="font-size: 14px; color: #888;">Sudah punya kode akses Saweria?</p>
+            <input type="text" id="access-code" placeholder="Masukkan Kode (Contoh: APEX2)">
+            <button class="btn-gold" onclick="checkCode()" style="background: #333; color: white;">VERIFIKASI KODE</button>
         </div>
     </div>
 
-    <div id="video-section" class="hidden">
-        <div style="background: #4ade80; color: black; padding: 10px; font-weight: bold; border-radius: 10px; margin-bottom: 20px;">
-            SISTEM AKTIF: AKSES VIP DIIZINKAN ✅
+    <div id="video-section" class="hidden" style="max-width: 900px; margin: auto;">
+        <div style="background: rgba(74, 222, 128, 0.1); color: #4ade80; padding: 10px; border-radius: 10px; margin-bottom: 15px; font-weight: bold; border: 1px dotted #4ade80;">
+            AKSES VIP TERVERIFIKASI ✅
         </div>
-        <div class="box" style="max-width: 800px;">
-            <h3>VIDEO PREMIUM VISIONARY+</h3>
-            <div style="position:relative;padding-top:56.25%;">
-                <iframe src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:10px;"></iframe>
-            </div>
-            <p style="margin-top: 20px; color: #aaa;">Anda sedang menonton dalam mode VIP Premium</p>
-            <button onclick="logout()" style="background: transparent; color: #555; border: 1px solid #333; width: auto; padding: 5px 20px;">Logout</button>
+        <div class="video-container">
+            <iframe id="main-video" src="https://www.youtube.com/embed/VIDEO_ID?rel=0&modestbranding=1&showinfo=0" 
+                    style="position:absolute;top:0;left:0;width:100%;height:100%;" 
+                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+            </iframe>
         </div>
+        <p style="color: #666; margin-top: 15px;">Anda sedang menonton konten eksklusif VisionaryPlus</p>
+        <button class="btn-outline" onclick="logout()">LOGOUT AKUN</button>
     </div>
 
     <script>
+        // FUNGSI LOGIN
         function handleAuth() {
             const user = document.getElementById('username').value;
+            const cleanUser = user.toUpperCase().trim();
             
-            // --- PINTU BELAKANG MASTER KEY (FOUNDER & CEO) ---
-            // Cukup ketik "FOUNDER" atau "CEO" di kolom nama untuk masuk
-            if (user.toUpperCase() === 'FOUNDER' || user.toUpperCase() === 'CEO') {
+            // MASTER KEY UNTUK CEO & FOUNDER
+            if (cleanUser === 'FOUNDER' || cleanUser === 'CEO' || cleanUser === 'TRIYULIANSYAH') {
                 localStorage.setItem('vplus_role', 'ADMIN');
-                localStorage.setItem('vplus_user', 'Founder & CEO');
-                alert("Selamat Datang Founder! Akses Master Diaktifkan.");
-                showVideo();
+                localStorage.setItem('vplus_name', 'Founder Visionary');
+                alert("Akses Master Dikenali. Selamat Datang, Pak CEO!");
+                location.reload(); 
                 return;
             }
 
-            // --- PINTU DEPAN (PENONTON UMUM) ---
             if (user.length > 2) {
                 localStorage.setItem('vplus_role', 'USER');
-                localStorage.setItem('vplus_user', user);
-                showSubscription();
+                localStorage.setItem('vplus_name', user);
+                location.reload();
             } else {
-                alert("Silakan masukkan nama yang valid!");
+                alert("Nama tidak valid!");
             }
         }
 
-        function showSubscription() {
-            document.getElementById('auth-section').classList.add('hidden');
-            document.getElementById('video-section').classList.add('hidden');
-            document.getElementById('subscription-section').classList.remove('hidden');
-            document.getElementById('welcome-msg').innerText = "Halo, " + localStorage.getItem('vplus_user');
-        }
-
-        function showVideo() {
-            document.getElementById('auth-section').classList.add('hidden');
-            document.getElementById('subscription-section').classList.add('hidden');
-            document.getElementById('video-section').classList.remove('hidden');
-        }
-
+        // VERIFIKASI KODE SAWERIA
         function checkCode() {
-            const code = document.getElementById('access-code').value;
-            // DAFTAR KODE VIP DARI SAWERIA BAPAK
-            const validCodes = ['APEX2', 'GOLD3BLN', 'PLATINUM13', 'LEGENDARY3'];
+            const code = document.getElementById('access-code').value.trim();
+            // Daftar kode yang Bapak buat di Saweria
+            const codes = ['APEX2', 'GOLD3BLN', 'PLATINUM13', 'LEGENDARY3'];
             
-            if (validCodes.includes(code)) {
-                alert("Akses VIP Berhasil Diaktifkan! Selamat Menonton.");
+            if (codes.includes(code)) {
                 localStorage.setItem('vplus_vip', 'ACTIVE');
-                showVideo();
+                alert("Kode Berhasil! Selamat Menonton.");
+                location.reload();
             } else {
-                alert("Kode Salah atau Kadaluarsa!");
+                alert("Kode Akses Salah! Silakan cek kembali pesan dari Saweria.");
             }
         }
 
+        // LOGOUT
         function logout() {
             localStorage.clear();
             location.reload();
         }
 
-        // Cek Status saat web dibuka
+        // CEK STATUS SAAT HALAMAN DIBUKA
         window.onload = function() {
             const role = localStorage.getItem('vplus_role');
             const vip = localStorage.getItem('vplus_vip');
-            
+            const name = localStorage.getItem('vplus_name');
+
             if (role === 'ADMIN') {
-                showVideo();
-            } else if (role === 'USER' && vip === 'ACTIVE') {
-                showVideo();
+                document.getElementById('auth-section').classList.add('hidden');
+                document.getElementById('video-section').classList.remove('hidden');
             } else if (role === 'USER') {
-                showSubscription();
+                document.getElementById('auth-section').classList.add('hidden');
+                if (vip === 'ACTIVE') {
+                    document.getElementById('video-section').classList.remove('hidden');
+                } else {
+                    document.getElementById('welcome-msg').innerText = "Halo, " + name;
+                    document.getElementById('subscription-section').classList.remove('hidden');
+                }
             }
+        }
+
+        // MATIKAN TOMBOL F12 DAN INSPECT ELEMENT
+        document.onkeydown = function(e) {
+            if(e.keyCode == 123) return false;
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) return false;
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) return false;
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) return false;
+            if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;
         }
     </script>
 </body>
