@@ -6,33 +6,42 @@
     <title>VisionaryPlus+ | Dananja Group</title>
     <style>
         :root { --gold: #facc15; --dark: #050505; --card: #111; --green: #4ade80; }
-        body { background-color: var(--dark); color: white; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; overflow: hidden; user-select: none; }
+        body { background-color: var(--dark); color: white; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; overflow-x: hidden; user-select: none; }
         .hidden { display: none !important; }
         
-        /* 1. TEKS BERGERAK (MARQUEE) */
-        .marquee-container { background: rgba(250, 204, 21, 0.1); padding: 10px 0; border-bottom: 1px solid var(--gold); overflow: hidden; }
-        .moving-text { white-space: nowrap; animation: marquee 20s linear infinite; color: var(--gold); font-weight: bold; font-size: 14px; }
+        /* 1. RUNNING TEXT EMAS */
+        .marquee-container { background: rgba(0, 0, 0, 0.9); padding: 12px 0; border-bottom: 2px solid var(--gold); overflow: hidden; position: sticky; top: 0; z-index: 100; }
+        .moving-text { white-space: nowrap; animation: marquee 25s linear infinite; color: var(--gold); font-weight: bold; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
         @keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
 
-        #wrapper { height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 20px; box-sizing: border-box; overflow-y: auto; }
-        .logo { font-size: 32px; font-weight: 900; letter-spacing: 4px; margin: 20px 0; }
+        #wrapper { min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 20px; box-sizing: border-box; }
+        .logo { font-size: 32px; font-weight: 900; letter-spacing: 4px; margin: 20px 0; text-shadow: 0 0 10px rgba(250,204,21,0.5); }
         .logo span { color: var(--gold); }
 
-        .panel { background: var(--card); width: 100%; max-width: 450px; padding: 30px; border-radius: 25px; border: 1px solid #222; box-shadow: 0 30px 60px rgba(0,0,0,1); }
-        input { width: 100%; padding: 16px; margin: 10px 0; border-radius: 12px; border: 1px solid #333; background: #000; color: white; box-sizing: border-box; outline: none; }
-        .btn { width: 100%; padding: 16px; border-radius: 12px; border: none; font-weight: bold; cursor: pointer; transition: 0.3s; margin-top: 10px; }
+        .panel { background: var(--card); width: 100%; max-width: 450px; padding: 30px; border-radius: 25px; border: 1px solid #222; box-shadow: 0 30px 60px rgba(0,0,0,1); animation: fadeIn 0.5s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        input { width: 100%; padding: 16px; margin: 10px 0; border-radius: 12px; border: 1px solid #333; background: #000; color: white; box-sizing: border-box; outline: none; font-size: 16px; }
+        input:focus { border-color: var(--gold); }
+        .btn { width: 100%; padding: 16px; border-radius: 12px; border: none; font-weight: bold; cursor: pointer; transition: 0.3s; margin-top: 10px; font-size: 16px; }
         .btn-gold { background: linear-gradient(45deg, var(--gold), #b45309); color: black; }
+        .btn-gold:hover { transform: scale(1.02); }
         
-        /* 2. VARIASI LANGGANAN */
-        .plan-box { border: 1px solid #333; padding: 15px; border-radius: 15px; margin-bottom: 10px; background: #080808; text-align: left; }
-        .plan-box b { color: var(--gold); font-size: 18px; }
+        /* 2. VARIASI LANGGANAN LENGKAP */
+        .plan-box { border: 1px solid #333; padding: 15px; border-radius: 15px; margin-bottom: 12px; background: #080808; text-align: left; transition: 0.3s; }
+        .plan-box:hover { border-color: var(--gold); }
+        .plan-box b { color: var(--gold); font-size: 18px; display: block; margin-bottom: 5px; }
+        .plan-price { font-size: 20px; font-weight: 800; color: white; }
 
         /* 3. LOGO STASIUN TV */
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; }
-        .station-btn { background: #000; border: 2px solid #222; border-radius: 20px; padding: 15px; text-align: center; cursor: pointer; }
-        .station-btn img { width: 80px; height: 80px; object-fit: contain; margin-bottom: 10px; background: #111; border-radius: 10px; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; margin-top: 10px; }
+        .station-btn { background: #000; border: 2px solid #222; border-radius: 20px; padding: 20px; text-align: center; cursor: pointer; transition: 0.3s; }
+        .station-btn:hover { border-color: var(--gold); transform: translateY(-5px); }
+        
+        /* GANTI LINK DI BAWAH INI DENGAN LINK LOGO BAPAK */
+        .st-logo { width: 100%; height: 80px; object-fit: contain; margin-bottom: 15px; filter: drop-shadow(0 0 5px rgba(255,255,255,0.2)); }
 
-        .footer { margin-top: 30px; font-size: 10px; color: #444; text-align: center; padding-bottom: 20px; }
+        .footer { margin-top: 40px; font-size: 11px; color: #444; text-align: center; line-height: 1.5; max-width: 300px; }
     </style>
 </head>
 <body oncontextmenu="return false;">
@@ -47,49 +56,72 @@
     <div class="logo">VISIONARY<span>PLUS+</span></div>
 
     <div id="view-register" class="panel">
-        <h2 style="margin-top:0;">Daftar Penonton</h2>
+        <h2 style="margin:0 0 10px 0;">Daftar Akun Baru</h2>
+        <p style="color:#888; font-size:14px; margin-bottom:20px;">Silakan buat akun untuk mulai menonton</p>
         <input type="text" id="reg-user" placeholder="Buat Username">
         <input type="password" id="reg-pass" placeholder="Buat Password">
         <button class="btn btn-gold" onclick="nav('view-login')">DAFTAR SEKARANG</button>
-        <p style="font-size:12px; color:#666;" onclick="nav('view-login')">Sudah punya akun? Login di sini</p>
+        <p style="font-size:13px; color:#666; margin-top:20px; cursor:pointer;" onclick="nav('view-login')">Sudah punya akun? <b>Login di sini</b></p>
     </div>
 
     <div id="view-login" class="panel hidden">
-        <h2 style="margin-top:0;">Member Login</h2>
+        <h2 style="margin:0 0 10px 0;">Member Login</h2>
+        <p style="color:#888; font-size:14px; margin-bottom:20px;">Gunakan akun Anda untuk masuk</p>
         <input type="text" id="user" placeholder="Username">
         <input type="password" id="pass" placeholder="Password">
         <button class="btn btn-gold" onclick="processLogin()">MASUK KE PLATFORM</button>
+        <p style="font-size:13px; color:#666; margin-top:20px; cursor:pointer;" onclick="nav('view-register')">Belum punya akun? <b>Daftar Baru</b></p>
     </div>
 
     <div id="view-pay" class="panel hidden">
-        <h2 style="color:#ff4d4d;">VIP TERKUNCI</h2>
-        <div class="plan-box"><b>SILVER</b> - 1 Bulan<br>Rp 60.000</div>
-        <div class="plan-box" style="border-color:var(--gold)"><b>GOLD</b> - 1 Tahun<br>Rp 500.000</div>
-        <div class="plan-box"><b>LEGEND</b> - 3 Tahun<br>Rp 4.000.000</div>
+        <h2 style="color:#ff4d4d; margin-top:0;">VIP TERKUNCI</h2>
+        <p style="color:#888; font-size:14px; margin-bottom:20px;">Pilih paket langganan untuk akses stasiun TV</p>
+        
+        <div class="plan-box">
+            <b>PAKET SILVER (Hemat)</b>
+            <span class="plan-price">Rp 60.000 / Bulan</span>
+        </div>
+        <div class="plan-box" style="border-color:var(--gold)">
+            <b>PAKET GOLD (Populer)</b>
+            <span class="plan-price">Rp 500.000 / Tahun</span>
+        </div>
+        <div class="plan-box">
+            <b>PAKET LEGEND (Sultan)</b>
+            <span class="plan-price">Rp 4.000.000 / 3 Tahun</span>
+        </div>
+
         <button class="btn btn-gold" onclick="window.open('https://saweria.co/VisionaryPlus')">BAYAR VIA SAWERIA</button>
-        <input type="text" id="v-code" placeholder="Masukkan Kode Aktivasi">
-        <button class="btn" style="background:#222; color:white;" onclick="checkVip()">AKTIFKAN</button>
+        
+        <div style="margin-top:25px; border-top:1px solid #222; padding-top:20px;">
+            <p style="font-size:13px; color:#888;">Sudah bayar? Masukkan kode aktivasi:</p>
+            <input type="text" id="v-code" placeholder="Contoh: APEX2">
+            <button class="btn" style="background:#222; color:white;" onclick="checkVip()">AKTIFKAN AKSES</button>
+        </div>
     </div>
 
     <div id="view-station" class="panel hidden">
-        <div style="color:var(--green); font-weight:bold; margin-bottom:15px;">AKSES VIP AKTIF ✅</div>
+        <div style="color:var(--green); font-weight:bold; margin-bottom:20px; font-size:14px; border:1px solid var(--green); display:inline-block; padding:5px 15px; border-radius:10px; background:rgba(74,222,128,0.1);">AKSES VIP AKTIF ✅</div>
+        <h3 style="margin:0 0 20px 0;">PILIH STASIUN TV</h3>
+        
         <div class="grid">
             <div class="station-btn" onclick="openTV('VAMS TV')">
-                <img src="LINK_LOGO_VAMSTV_DI_GITHUB_BAPAK" alt="LOGO VAMS">
+                <img src="https://raw.githubusercontent.com/triyuliansyah588ok/Visionary/main/logo_vams.png" class="st-logo" alt="VAMS">
                 <br><b>VAMS TV</b>
             </div>
             <div class="station-btn" onclick="openTV('NSTV')">
-                <img src="LINK_LOGO_NSTV_DI_GITHUB_BAPAK" alt="LOGO NSTV">
+                <img src="https://raw.githubusercontent.com/triyuliansyah588ok/Visionary/main/logo_nstv.png" class="st-logo" alt="NSTV">
                 <br><b>NSTV</b>
             </div>
         </div>
-        <button class="btn" style="background:transparent; color:#444;" onclick="location.reload()">LOGOUT</button>
+        
+        <button class="btn" style="background:transparent; color:#444; margin-top:30px;" onclick="location.reload()">LOGOUT AKUN</button>
     </div>
 
     <div id="view-catalog" class="panel hidden">
-        <h3 id="tv-name" style="color:var(--gold);"></h3>
-        <div id="video-list"></div>
-        <button class="btn btn-gold" onclick="nav('view-station')">KEMBALI KE STASIUN</button>
+        <h3 id="tv-name" style="color:var(--gold); margin-top:0;"></h3>
+        <p style="color:#666; font-size:14px;">Memuat konten eksklusif...</p>
+        <div id="video-list" style="min-height:200px; border:1px dashed #333; border-radius:15px; margin:20px 0; display:flex; align-items:center; justify-content:center; color:#444;">Video segera hadir</div>
+        <button class="btn btn-gold" onclick="nav('view-station')">KEMBALI KE MENU TV</button>
     </div>
 
     <div class="footer">
@@ -98,17 +130,24 @@
 </div>
 
 <script>
+    // 4. SISTEM KUNCI NAVIGASI (ANTI-GOOGLE)
+    function lockNav() {
+        window.history.pushState(null, "", window.location.href);
+    }
+
     function nav(id) {
         document.querySelectorAll('.panel').forEach(p => p.classList.add('hidden'));
         document.getElementById(id).classList.remove('hidden');
-        // KUNCI NAVIGASI: Selalu push state agar tidak bisa keluar ke Google
-        window.history.pushState({path: id}, '', '');
+        lockNav(); // Kunci setiap pindah halaman
     }
 
+    // Mencegah tombol Back keluar ke Google
     window.onpopstate = function() {
-        // Jika user tekan back, paksa kembali ke view-station atau view-login
-        if(localStorage.getItem('isVip')) nav('view-station');
-        else nav('view-login');
+        if(localStorage.getItem('isVip')) {
+            nav('view-station');
+        } else {
+            nav('view-login');
+        }
     };
 
     function processLogin() {
@@ -116,25 +155,33 @@
         if(u === "VisionaryPluss Founder90") {
             localStorage.setItem('isVip', 'true');
             nav('view-station');
-        } else {
+        } else if(u.length > 0) {
             nav('view-pay');
+        } else {
+            alert("Masukkan Username!");
         }
     }
 
     function checkVip() {
         if(document.getElementById('v-code').value === "APEX2") {
             localStorage.setItem('isVip', 'true');
+            alert("Aktivasi Berhasil! Selamat Menonton.");
             nav('view-station');
-        } else { alert("Kode Salah!"); }
+        } else { 
+            alert("Kode Aktivasi Salah!"); 
+        }
     }
 
     function openTV(name) {
-        document.getElementById('tv-name').innerText = name;
+        document.getElementById('tv-name').innerText = "PROGRAM " + name;
         nav('view-catalog');
     }
 
-    // Jalankan Kunci Navigasi saat Start
-    window.onload = () => { window.history.pushState(null, '', ''); };
+    window.onload = () => {
+        lockNav();
+        // Cek sesi login
+        if(localStorage.getItem('isVip')) nav('view-station');
+    };
 </script>
 </body>
 </html>
