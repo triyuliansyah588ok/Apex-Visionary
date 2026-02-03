@@ -3,41 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CEO Dashboard</title>
+    <title>Apex Control Panel 2026</title>
     <style>
-        body { margin: 0; font-family: 'Segoe UI', sans-serif; background: #000; color: white; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-        .card { background: #0f172a; width: 90%; max-width: 380px; border-radius: 30px; border: 1px solid #1e293b; padding: 30px 20px; text-align: center; }
-        #profileImg { width: 120px; height: 120px; border-radius: 50%; border: 3px solid #ffd700; object-fit: cover; margin-bottom: 15px; background: #111; }
-        .btn { display: block; padding: 14px; margin: 10px 0; border-radius: 12px; text-decoration: none; font-weight: bold; font-size: 14px; }
-        .btn-wa { background: #25d366; color: white; }
-        .btn-back { background: #3b82f6; color: white; }
+        body { background: #000; color: lawngreen; font-family: monospace; padding: 20px; }
+        .stat-box { border: 1px solid lawngreen; padding: 20px; margin-bottom: 20px; border-radius: 10px; }
+        .nav-btn { background: lawngreen; color: black; padding: 10px 20px; border: none; font-weight: bold; cursor: pointer; border-radius: 5px; }
     </style>
 </head>
 <body>
-    <div class="card">
-        <div style="position:relative; width:120px; margin: 0 auto;">
-            <img id="profileImg" src="https://via.placeholder.com/150" alt="CEO">
-            <input type="file" id="up" hidden onchange="saveFoto(this)">
-            <button onclick="document.getElementById('up').click()" style="position:absolute; bottom:10px; right:0; background:gold; border:none; border-radius:50%; width:30px; height:30px; cursor:pointer;">+</button>
-        </div>
-        <h2 style="margin:5px 0;">M Ramadhan</h2>
-        <p style="color:gold; font-size:11px; letter-spacing:2px; margin-bottom:25px;">CEO THE APEX VISIONARY</p>
-
-        <div style="background:rgba(0,140,255,0.1); border:1px dashed #008cff; padding:15px; border-radius:15px; margin-bottom:20px;">
-            <div style="color:#008cff; font-size:12px; font-weight:bold;">Pusat Dana: 08211553241</div>
-            <p style="font-size:10px; color:#94a3b8; margin-top:5px;">Cek WhatsApp untuk bukti transfer penonton.</p>
-        </div>
-
-        <a href="https://wa.me/628211553241" target="_blank" class="btn btn-wa">BUKA WHATSAPP</a>
-        <a href="index.html" class="btn btn-back">KEMBALI</a>
+    <h1>APEX INTERACTIVE STUDIO | CENTRAL CONTROL</h1>
+    <p>Logged as: <b>Founder & CEO M RAMADHAN</b></p>
+    <hr>
+    
+    <div class="stat-box">
+        <h3>Sistem Monitoring 2026</h3>
+        <ul>
+            <li>Status Database: Online</li>
+            <li>Enkripsi Gmail: Aktif</li>
+            <li>Status Server: Optimal</li>
+        </ul>
     </div>
 
+    <div class="stat-box">
+        <h3>Kontrol User</h3>
+        <p>Total User Terdaftar: 1 (Lokal)</p>
+        <button class="nav-btn" onclick="alert('Membuka Database User...')">Lihat Gmail Member</button>
+        <button class="nav-btn" style="background:red; color:white;" onclick="localStorage.clear(); location.reload();">Reset Seluruh Data</button>
+    </div>
+
+    <button onclick="window.location.href='index.html'" style="background:#222; color:white; padding:10px;">Lihat Tampilan Web</button>
+
     <script>
-        window.onload = () => { if(localStorage.getItem("fotoCEO")) document.getElementById('profileImg').src = localStorage.getItem("fotoCEO"); }
-        function saveFoto(input) {
-            const r = new FileReader();
-            r.onload = (e) => { localStorage.setItem("fotoCEO", e.target.result); location.reload(); }
-            r.readAsDataURL(input.files[0]);
+        if(localStorage.getItem('role') !== 'ADMIN') {
+            document.body.innerHTML = "<h1>403 - ACCESS DENIED</h1><p>Bukan Akses Developer Apex App Studio.</p>";
+            setTimeout(() => { window.location.href = "login.html"; }, 2000);
         }
     </script>
 </body>
