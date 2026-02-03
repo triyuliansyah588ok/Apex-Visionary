@@ -4,75 +4,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>VisionaryPlus+ | Dananja Group</title>
+    <link rel="manifest" href="https://raw.githubusercontent.com/triyuliansyah588ok/Visionary/main/manifest.json">
     <style>
         :root { --gold: #facc15; --bg: #050505; --card: #111; }
         body { background: var(--bg); color: white; font-family: sans-serif; margin: 0; padding: 0; }
-        .hidden { display: none !important; }
         
-        /* TOMBOL DOWNLOAD 2026 */
-        .download-bar { background: #1a1a1a; border: 1px dashed var(--gold); padding: 15px; text-align: center; margin: 60px 20px 20px 20px; border-radius: 15px; }
-        .btn-download { background: var(--gold); color: black; border: none; padding: 10px 20px; border-radius: 8px; font-weight: bold; cursor: pointer; animation: pulse 2s infinite; }
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        /* HEADER CEO */
+        .header-ceo { background: var(--gold); color: black; padding: 12px; font-weight: bold; text-align: center; position: fixed; top: 0; width: 100%; z-index: 1000; font-size: 13px; }
 
-        .marquee { background: var(--gold); color: black; padding: 10px; font-weight: bold; position: fixed; top: 0; width: 100%; z-index: 1000; overflow: hidden; white-space: nowrap; }
-        .marquee-text { display: inline-block; animation: scroll 20s linear infinite; }
-        @keyframes scroll { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+        /* TOMBOL DOWNLOAD RAKSASA */
+        .download-container { margin-top: 70px; padding: 20px; text-align: center; }
+        .btn-download-now { 
+            background: linear-gradient(45deg, #ff0000, #b45309); 
+            color: white; border: 3px solid white; padding: 20px; 
+            border-radius: 20px; font-weight: 900; font-size: 18px; 
+            width: 100%; max-width: 350px; cursor: pointer;
+            box-shadow: 0 0 20px rgba(255,255,255,0.3);
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
 
-        .app { display: flex; flex-direction: column; align-items: center; padding: 20px; }
-        .panel { background: var(--card); padding: 30px; border-radius: 25px; border: 1px solid #222; width: 100%; max-width: 400px; text-align: center; }
-        input { width: 100%; padding: 15px; margin: 10px 0; border-radius: 10px; border: 1px solid #333; background: #000; color: white; box-sizing: border-box; }
-        .btn-apex { width: 100%; padding: 15px; border-radius: 10px; border: none; background: var(--gold); font-weight: bold; cursor: pointer; }
+        .app-content { display: flex; flex-direction: column; align-items: center; padding: 10px; }
+        .panel { background: var(--card); padding: 30px; border-radius: 25px; border: 1px solid #333; width: 90%; max-width: 400px; text-align: center; }
+        input { width: 100%; padding: 15px; margin: 10px 0; border-radius: 12px; border: 1px solid #333; background: #000; color: white; box-sizing: border-box; }
+        .btn-apex { width: 100%; padding: 15px; border-radius: 12px; border: none; background: var(--gold); font-weight: bold; font-size: 16px; cursor: pointer; color: black; }
+        .hidden { display: none !important; }
     </style>
 </head>
 <body>
 
-<div class="marquee">
-    <div class="marquee-text">Selamat Datang... Salam Pemilik Saham Dananja Group M RAMADHAN Selaku jabatan Founder & CEO VisionaryPlus+.</div>
+<div class="header-ceo">
+    M RAMADHAN - FOUNDER & CEO VISIONARYPLUS+
 </div>
 
-<div id="install-area" class="download-bar hidden">
-    <p style="font-size: 14px; margin-bottom: 10px;">Aplikasi VisionaryPlus+ Tersedia!</p>
-    <button id="btnInstall" class="btn-download">DOWNLOAD / INSTAL SEKARANG</button>
+<div class="download-container">
+    <button id="manualInstall" class="btn-download-now">
+        📥 DOWNLOAD APLIKASI DI SINI<br>
+        <span style="font-size: 12px; font-weight: normal;">(Klik Untuk Pasang di HP Bapak)</span>
+    </button>
 </div>
 
-<div class="app">
-    <h1 style="color:var(--gold); letter-spacing:3px;">VISIONARYPLUS+</h1>
+<div class="app-content">
+    <h1 style="color:var(--gold); letter-spacing:4px; font-size: 30px; margin-bottom: 20px;">VISIONARYPLUS+</h1>
 
     <div id="v-daftar" class="panel">
-        <h3>Pendaftaran 2026</h3>
-        <input type="text" id="u" placeholder="Username">
-        <input type="email" id="e" placeholder="Gmail Pemulihan">
-        <input type="password" id="p" placeholder="Password">
-        <button class="btn-apex" onclick="daftar()">DAFTAR & MASUK</button>
+        <h2 style="margin-top:0;">Pendaftaran 2026</h2>
+        <input type="text" id="user" placeholder="Buat Username">
+        <input type="email" id="email" placeholder="Gmail Pemulihan">
+        <input type="password" id="pass" placeholder="Buat Password">
+        <button class="btn-apex" onclick="prosesDaftar()">DAFTAR & MASUK</button>
     </div>
 </div>
 
 <script>
     let deferredPrompt;
 
-    // DETEKSI OTOMATIS TEMPAT DOWNLOAD
+    // SISTEM DOWNLOAD OTOMATIS
     window.addEventListener('beforeinstallprompt', (e) => {
         e.preventDefault();
         deferredPrompt = e;
-        document.getElementById('install-area').classList.remove('hidden');
     });
 
-    document.getElementById('btnInstall').addEventListener('click', async () => {
+    document.getElementById('manualInstall').addEventListener('click', async () => {
         if (deferredPrompt) {
             deferredPrompt.prompt();
             const { outcome } = await deferredPrompt.userChoice;
-            if (outcome === 'accepted') {
-                document.getElementById('install-area').classList.add('hidden');
-            }
             deferredPrompt = null;
+        } else {
+            alert("Sistem Download Siap! Caranya:\n1. Klik titik 3 di pojok kanan atas browser\n2. Pilih 'Instal Aplikasi' atau 'Tambahkan ke Layar Utama'");
         }
     });
 
-    function daftar() {
-        const user = document.getElementById('u').value;
-        if(user) {
-            localStorage.setItem('user', user);
-            alert("Berhasil! Silakan klik tombol Download di atas agar aplikasi muncul di HP Bapak.");
+    function prosesDaftar() {
+        const u = document.getElementById('user').value;
+        if(u) {
+            localStorage.setItem('member', u);
+            alert("Pendaftaran Berhasil, Pak CEO! Jangan lupa klik tombol DOWNLOAD di atas.");
+        } else {
+            alert("Mohon isi username!");
         }
     }
 </script>
