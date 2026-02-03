@@ -2,35 +2,42 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daftar Penonton - Visionary+</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Daftar VisionaryPlus+</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <style>
-        body { margin: 0; font-family: 'Segoe UI', sans-serif; background: #000; color: white; display: flex; align-items: center; justify-content: center; height: 100vh; }
-        .card { background: #111; padding: 30px; border-radius: 25px; border: 1px solid #1e293b; width: 85%; max-width: 350px; text-align: center; }
-        input { width: 100%; padding: 14px; margin-bottom: 12px; border-radius: 12px; border: 1px solid #334155; background: #000; color: white; box-sizing: border-box; outline: none; }
-        .btn { width: 100%; padding: 14px; border-radius: 12px; border: none; background: #3b82f6; color: white; font-weight: bold; cursor: pointer; }
+        :root { --gold: #facc15; --bg: #050505; --card: #111; }
+        body { background: var(--bg); color: white; font-family: 'Inter', sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; overflow: hidden; }
+        .box { background: var(--card); padding: 40px; border-radius: 30px; border: 1px solid #222; width: 100%; max-width: 400px; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        .logo { font-size: 28px; font-weight: 900; margin-bottom: 30px; }
+        .logo span { color: var(--gold); }
+        input { width: 100%; padding: 15px; margin: 10px 0; border-radius: 12px; border: 1px solid #333; background: #000; color: white; box-sizing: border-box; }
+        .btn-apex { width: 100%; padding: 16px; border-radius: 12px; border: none; background: linear-gradient(45deg, var(--gold), #b45309); font-weight: bold; cursor: pointer; margin-top: 15px; }
     </style>
 </head>
 <body>
-    <div class="card">
-        <h2 style="color: gold;">DAFTAR PENONTON</h2>
-        <p style="font-size: 12px; color: #94a3b8; margin-bottom: 20px;">Daftar gratis untuk akses VAMS & NS TV</p>
-        <input type="text" id="regUser" placeholder="Username">
-        <input type="password" id="regPass" placeholder="Password">
-        <button class="btn" onclick="daftar()">DAFTAR SEKARANG</button>
-        <p style="font-size: 12px; margin-top: 15px;"><a href="login.html" style="color: #94a3b8; text-decoration: none;">Sudah punya akun? Masuk</a></p>
+    <div class="box">
+        <div class="logo">VISIONARY<span>PLUS+</span></div>
+        <h3>Daftar Akun 2026</h3>
+        <p style="color:#666; font-size:12px;">Data dienkripsi oleh Apex App Interactive Studio</p>
+        <input type="text" id="reg-user" placeholder="Username Baru">
+        <input type="email" id="reg-email" placeholder="Alamat Gmail (Untuk Pemulihan)">
+        <input type="password" id="reg-pass" placeholder="Password Baru">
+        <button class="btn-apex" onclick="register()">BUAT AKUN SEKARANG</button>
+        <p style="font-size:13px; margin-top:20px; color:#888;">Sudah ada akun? <a href="login.html" style="color:var(--gold); text-decoration:none;">Login</a></p>
     </div>
     <script>
-        function daftar() {
-            const u = document.getElementById('regUser').value;
-            const p = document.getElementById('regPass').value;
-            if(u && p) {
-                // Simpan data dengan status penonton
-                localStorage.setItem("user_" + u, p);
-                localStorage.setItem("role_" + u, "penonton"); 
-                alert("Daftar Berhasil! Selamat menonton.");
+        function register() {
+            const u = document.getElementById('reg-user').value;
+            const e = document.getElementById('reg-email').value;
+            const p = document.getElementById('reg-pass').value;
+            if(u && e && p) {
+                localStorage.setItem('apex_user', u);
+                localStorage.setItem('apex_email', e);
+                localStorage.setItem('apex_pass', p);
+                alert("Pendaftaran Berhasil! Silakan Login.");
                 window.location.href = "login.html";
-            } else { alert("Mohon isi semua data!"); }
+            } else { alert("Mohon lengkapi data!"); }
         }
     </script>
 </body>
