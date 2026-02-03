@@ -2,43 +2,39 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Visionary+</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Login Member</title>
     <style>
-        body { margin: 0; font-family: 'Segoe UI', sans-serif; background: #000; color: white; display: flex; align-items: center; justify-content: center; height: 100vh; }
-        .card { background: #111; padding: 35px 25px; border-radius: 25px; border: 1px solid #1e293b; width: 85%; max-width: 350px; text-align: center; }
-        input { width: 100%; padding: 14px; margin-bottom: 12px; border-radius: 12px; border: 1px solid #334155; background: #000; color: white; box-sizing: border-box; outline: none; }
-        .btn { width: 100%; padding: 14px; border-radius: 12px; border: none; background: #3b82f6; color: white; font-weight: bold; cursor: pointer; width: 100%; }
-        .brand { color: gold; font-size: 24px; font-weight: 900; margin-bottom: 20px; letter-spacing: 2px; }
+        :root { --gold: #facc15; --bg: #050505; }
+        body { background: var(--bg); color: white; font-family: sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        .panel { background: #111; padding: 40px; border-radius: 25px; width: 350px; text-align: center; border: 1px solid #222; }
+        input { width: 100%; padding: 15px; margin: 10px 0; border-radius: 10px; border: 1px solid #333; background: #000; color: white; box-sizing: border-box; }
+        button { width: 100%; padding: 15px; border-radius: 10px; border: none; background: var(--gold); font-weight: bold; cursor: pointer; }
     </style>
 </head>
 <body>
-    <div class="card">
-        <div class="brand">VISIONARY+</div>
-        <input type="text" id="lUser" placeholder="Username">
-        <input type="password" id="lPass" placeholder="Password">
-        <button class="btn" onclick="login()">MASUK</button>
-        <p style="font-size: 12px; margin-top: 20px; color: #94a3b8;">Belum punya akun? <a href="daftar.html" style="color: #3b82f6; text-decoration: none;">Daftar</a></p>
+    <div class="panel">
+        <h2 style="margin-bottom:30px;">Member Access</h2>
+        <input type="text" id="login-user" placeholder="Username">
+        <input type="password" id="login-pass" placeholder="Password">
+        <button onclick="checkAccess()">MASUK SEKARANG</button>
     </div>
-
     <script>
-        function login() {
-            const u = document.getElementById('lUser').value;
-            const p = document.getElementById('lPass').value;
+        function checkAccess() {
+            const u = document.getElementById('login-user').value;
+            const p = document.getElementById('login-pass').value;
             
-            if (u === "Ramadhan" && p === "admin123") {
-                localStorage.setItem("isLoggedIn", "true");
-                localStorage.setItem("userRole", "CEO");
+            // CEK AKUN FOUNDER (DEVELOPER)
+            if(u === "VisionaryPluss Founder90") {
+                localStorage.setItem('role', 'ADMIN');
+                window.location.href = "admin.html";
+            } 
+            // CEK AKUN PENONTON
+            else if(u === localStorage.getItem('apex_user') && p === localStorage.getItem('apex_pass')) {
+                localStorage.setItem('role', 'USER');
                 window.location.href = "index.html";
             } else {
-                const savedP = localStorage.getItem("user_" + u);
-                if (savedP === p && p !== null) {
-                    localStorage.setItem("isLoggedIn", "true");
-                    localStorage.setItem("userRole", "penonton");
-                    window.location.href = "index.html";
-                } else {
-                    alert("Username atau Password salah!");
-                }
+                alert("Akun tidak terdaftar atau password salah!");
             }
         }
     </script>
