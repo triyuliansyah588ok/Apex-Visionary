@@ -2,116 +2,169 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>VisionaryPlus+ | Official Dananja Group</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VisionaryPlus+ | NOVA Interactive Corp</title>
     <style>
-        :root { --gold: #facc15; --bg: #000000; --green: #01875f; }
-        body { background: var(--bg); color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; }
+        :root { --gold: #facc15; --premium: #1a1a1a; --glass: rgba(255, 255, 255, 0.1); }
+        body { margin: 0; background: #000; color: white; font-family: 'Segoe UI', sans-serif; overflow-x: hidden; }
         
-        /* HEADER CEO */
-        .marquee { background: var(--gold); color: black; padding: 12px; font-weight: bold; position: fixed; top: 0; width: 100%; z-index: 1000; }
-        .marquee-text { display: inline-block; white-space: nowrap; animation: scroll 20s linear infinite; }
-        @keyframes scroll { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
-
-        .container { display: flex; flex-direction: column; align-items: center; padding: 100px 20px 50px 20px; text-align: center; }
-
-        /* LOGO BOX */
-        .logo-container { margin-bottom: 25px; }
-        .logo-app { width: 130px; height: 130px; border-radius: 35px; border: 4px solid var(--gold); box-shadow: 0 0 30px rgba(250, 204, 21, 0.4); }
-
-        /* PLAY STORE STYLE BUTTON */
-        .download-box { background: #111; padding: 30px; border-radius: 30px; border: 1px solid #333; width: 100%; max-width: 380px; box-shadow: 0 10px 40px rgba(0,0,0,0.8); }
-        .btn-install { 
-            background: var(--green); color: white; border: none; padding: 18px; 
-            width: 100%; border-radius: 12px; font-weight: bold; font-size: 18px; 
-            cursor: pointer; text-decoration: none; display: block; margin-top: 15px;
-            box-shadow: 0 4px 15px rgba(1, 135, 95, 0.4);
+        /* 4. ANIMASI LATAR BELAKANG MEWAH */
+        .bg-animate {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
+            z-index: -1;
         }
-        .btn-install:active { transform: scale(0.98); }
+        .particle {
+            position: absolute; width: 3px; height: 3px; background: var(--gold);
+            border-radius: 50%; opacity: 0.4; animation: float 10s infinite linear;
+        }
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            50% { opacity: 0.5; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
 
-        /* FORM PANEL */
-        .panel { background: #111; padding: 25px; border-radius: 25px; width: 100%; max-width: 380px; border: 1px solid #222; margin-top: 20px; }
-        input { width: 100%; padding: 15px; margin: 10px 0; border-radius: 12px; border: 1px solid #333; background: #050505; color: white; box-sizing: border-box; }
-        .btn-gold { background: var(--gold); color: black; border: none; padding: 15px; width: 100%; border-radius: 12px; font-weight: bold; cursor: pointer; }
+        /* HEADER */
+        .header { padding: 40px 20px; text-align: center; }
+        .logo-main { width: 100px; border-radius: 20px; border: 2px solid var(--gold); box-shadow: 0 0 15px var(--gold); }
         
-        .hidden { display: none !important; }
-        .footer { margin-top: 50px; font-size: 11px; color: #555; line-height: 1.6; }
+        /* 1 & 2. SISTEM LOGIN CEO & PENONTON */
+        .card { 
+            background: var(--premium); border: 1px solid var(--gold); 
+            padding: 30px; border-radius: 20px; width: 90%; max-width: 400px; 
+            margin: 20px auto; backdrop-filter: blur(10px); box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        input { 
+            width: 100%; padding: 15px; margin: 10px 0; border-radius: 10px; 
+            border: 1px solid #444; background: #000; color: white; box-sizing: border-box;
+        }
+        .btn-gold { 
+            background: linear-gradient(45deg, #facc15, #a88500); color: black; 
+            width: 100%; padding: 15px; border: none; border-radius: 10px; 
+            font-weight: bold; cursor: pointer; transition: 0.3s; font-size: 16px;
+        }
+
+        /* 6 & 8. PLAYER DENGAN LOGO TETAP (OVERLAY) */
+        .player-container { position: relative; width: 100%; max-width: 800px; margin: 20px auto; display: none; }
+        .tv-overlay { 
+            position: absolute; top: 10px; right: 10px; width: 50px; 
+            z-index: 100; pointer-events: none; filter: drop-shadow(0 0 5px black);
+        }
+        iframe { width: 100%; aspect-ratio: 16/9; border: 2px solid #333; border-radius: 15px; }
+
+        /* 3. VARIAN VIP LENGKAP */
+        .vip-list { font-size: 12px; text-align: left; margin: 15px 0; color: #ccc; }
+        .vip-item { border-left: 2px solid var(--gold); padding-left: 10px; margin-bottom: 5px; }
+
+        /* 5. DONASI M RAMADHAN */
+        .donation-box { 
+            background: rgba(255,217,0,0.1); padding: 15px; border-radius: 10px; 
+            margin-top: 20px; border: 1px dashed var(--gold); font-size: 13px;
+        }
     </style>
 </head>
 <body>
 
-    <div class="marquee">
-        <div class="marquee-text">Selamat Datang Penonton... Salam Pemilik Saham Dananja Group M RAMADHAN Selaku Founder & CEO VisionaryPlus+ 2026.</div>
+    <div class="bg-animate" id="particles"></div>
+
+    <div class="header">
+        <img src="https://raw.githubusercontent.com/triyuliansyah588ok/Visionary/main/logo_vams.png" class="logo-main">
+        <h2 style="letter-spacing: 4px; margin-bottom: 5px;">VISIONARYPLUS+</h2>
+        <p style="font-size: 10px; color: var(--gold); margin: 0;">MEMBER OF DANANJA GROUP</p>
     </div>
 
-    <div class="container">
+    <div id="loginSection" class="card">
+        <h3 style="margin-top:0; color:var(--gold);">SECURE LOGIN</h3>
+        <input type="text" id="username" placeholder="Username CEO / VIP ID">
+        <input type="password" id="password" placeholder="Password">
+        <button class="btn-gold" onclick="authSystem()">MASUK KE SISTEM</button>
         
-        <div class="logo-container">
-            <img src="https://raw.githubusercontent.com/triyuliansyah588ok/Visionary/main/logo_vams.png" class="logo-app" onerror="this.src='https://cdn-icons-png.flaticon.com/512/716/716429.png'">
-            <h1 style="color:var(--gold); margin: 15px 0 5px 0; letter-spacing: 2px;">VISIONARYPLUS+</h1>
-            <p style="color:#888; margin:0;">Versi Resmi 1.0.26 (Build 400k)</p>
+        <div class="vip-list">
+            <div class="vip-item">👑 <b>VIP Permanent:</b> Akses Semua Stasiun</div>
+            <div class="vip-item">💎 <b>VIP Bulanan:</b> Rp 50.000 / Bulan</div>
         </div>
 
-        <div class="download-box">
-            <span style="color:#01875f; font-weight:bold; font-size:14px;">Tersedia untuk Android ✅</span>
-            <a href="https://triyuliansyah588ok.github.io/Visionary/VisionaryPlus.apk" id="downloadLink" class="btn-install">
-                INSTAL APLIKASI
-            </a>
-            <p style="font-size:11px; color:#555; margin-top:10px;">Klik tombol hijau untuk mengunduh file APK asli ke HP Bapak.</p>
+        <div class="donation-box">
+            <b>AKTIVASI VIP & DONASI:</b><br>
+            A.n <b>M RAMADHAN</b><br>
+            Dana/No.HP: <b style="color:var(--gold); font-size:16px;">08211553241</b>
         </div>
+    </div>
 
-        <div id="v-daftar" class="panel">
-            <h3 style="margin-top:0;">Daftar Penonton VIP</h3>
-            <input type="text" id="reg-u" placeholder="Username Baru">
-            <input type="password" id="reg-p" placeholder="Password Baru">
-            <button class="btn-gold" onclick="prosesDaftar()">DAFTAR SEKARANG</button>
-            <p style="font-size:12px; margin-top:15px;">Sudah punya akun? <b style="color:var(--gold); cursor:pointer;" onclick="tukarView('v-login')">Login</b></p>
-        </div>
+    <div id="mainDashboard" style="display:none; padding: 20px;">
+        <div class="card" style="max-width: 800px;">
+            <div id="userInfo"></div>
+            <hr border="0.5" color="#333">
+            
+            <h4 style="color:var(--gold)">TRANSMISI SATELIT</h4>
+            <div style="display:flex; gap:10px; justify-content: center; margin-bottom: 20px;">
+                <button onclick="playContent('VAMS TV', 'D0ydazTSAyE')" class="btn-gold" style="width:auto; padding:10px 20px;">VAMS TV</button>
+                <button onclick="playContent('NSTV', 'D0ydazTSAyE')" class="btn-gold" style="width:auto; padding:10px 20px; background:white;">NSTV</button>
+            </div>
 
-        <div id="v-login" class="panel hidden">
-            <h3>Login Member</h3>
-            <input type="text" id="log-u" placeholder="Username">
-            <input type="password" id="log-p" placeholder="Password">
-            <button class="btn-gold" onclick="prosesLogin()">MASUK</button>
-            <p style="font-size:12px; margin-top:15px;">Belum punya akun? <b style="color:var(--gold); cursor:pointer;" onclick="tukarView('v-daftar')">Daftar</b></p>
-        </div>
+            <div class="player-container" id="playerBox">
+                <img src="https://raw.githubusercontent.com/triyuliansyah588ok/Visionary/main/logo_vams.png" class="tv-overlay">
+                <div id="videoFrame"></div>
+            </div>
 
-        <div class="footer">
-            Dikembangkan oleh Developer & Lead Developer Apex App Interactive Studio 2026<br>
-            Sistem Keamanan Terenkripsi • <b>M RAMADHAN CEO</b>
+            <h4 style="color:var(--gold); margin-top:30px;">NOVA AUDIO SYSTEM</h4>
+            <div style="background:#000; padding:15px; border-radius:10px; position:relative;">
+                <img src="https://raw.githubusercontent.com/triyuliansyah588ok/Visionary/main/logo_vams.png" style="width:30px; position:absolute; right:10px; top:10px;">
+                <p id="musicStatus" style="font-size:11px; margin:0 0 10px 0;">🔴 LIVE AUDIO: DJ Biring Manggis</p>
+                <audio id="novaMusic" controls style="width:100%;">
+                    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+                </audio>
+            </div>
         </div>
     </div>
 
     <script>
-        function tukarView(id) {
-            document.querySelectorAll('.panel').forEach(p => p.classList.add('hidden'));
-            document.getElementById(id).classList.remove('hidden');
+        // Animasi Partikel Emas
+        const pContainer = document.getElementById('particles');
+        for (let i = 0; i < 40; i++) {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            p.style.left = Math.random() * 100 + 'vw';
+            p.style.animationDelay = Math.random() * 15 + 's';
+            p.style.opacity = Math.random();
+            pContainer.appendChild(p);
         }
 
-        function prosesDaftar() {
-            const user = document.getElementById('reg-u').value;
-            const pass = document.getElementById('reg-p').value;
-            if(user && pass) {
-                localStorage.setItem('db_user', user);
-                localStorage.setItem('db_pass', pass);
-                alert("Pendaftaran Berhasil! Sekarang silakan Login.");
-                tukarView('v-login');
-            } else { alert("Mohon isi semua data!"); }
-        }
+        function authSystem() {
+            const u = document.getElementById('username').value;
+            const p = document.getElementById('password').value;
 
-        function prosesLogin() {
-            const u = document.getElementById('log-u').value;
-            const p = document.getElementById('log-p').value;
-            
-            // AKSES KHUSUS FOUNDER
-            if(u === "VisionaryPluss Founder90") {
-                alert("Selamat Datang, Pak CEO M RAMADHAN!");
-                window.location.href = "#player"; // Jalur masuk TV
-            } else if(u === localStorage.getItem('db_user') && p === localStorage.getItem('db_pass')) {
-                alert("Login Berhasil!");
+            // 1 & 2. LOGIC LOGIN BEDA CEO & PENONTON
+            if (u === "VisionaryPluss Founder90" && p === "DANANJA2026") {
+                alert("ACCESS GRANTED: Welcome Chairman M RAMADHAN");
+                showDashboard("FOUNDER CEO", "VIP PERMANENT");
+            } else if (u === "penonton" && p === "vip") {
+                alert("Akses VIP Aktif!");
+                showDashboard("PREMIUM MEMBER", "VIP MONTHLY");
             } else {
-                alert("Username atau Password salah!");
+                alert("AKSES DITOLAK! Silahkan hubungi M RAMADHAN (08211553241) untuk aktivasi.");
             }
+        }
+
+        function showDashboard(role, status) {
+            document.getElementById('loginSection').style.display = 'none';
+            document.getElementById('mainDashboard').style.display = 'block';
+            document.getElementById('userInfo').innerHTML = `
+                <div style="text-align:left;">
+                    <span style="background:gold; color:black; padding:2px 10px; border-radius:5px; font-weight:bold; font-size:10px;">${status}</span>
+                    <h3 style="margin:5px 0;">${role}</h3>
+                    <small style="color:gray;">NOVA INTERACTIVE CORPORATION</small>
+                </div>
+            `;
+        }
+
+        // 7. OTOMATIS PUTAR YOUTUBE (ID dari link yang Bapak kasih)
+        function playContent(name, id) {
+            document.getElementById('playerBox').style.display = 'block';
+            document.getElementById('videoFrame').innerHTML = `
+                <iframe src="https://www.youtube.com/embed/${id}?autoplay=1&controls=1&modestbranding=1&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            `;
+            alert("Memulai Siaran Resmi: " + name);
         }
     </script>
 </body>
