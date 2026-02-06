@@ -2,215 +2,165 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VisionaryPlus+ | M RAMADHAN CEO OFFICIAL</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>VisionaryPlus+ | M RAMADHAN CEO</title>
     <style>
-        :root { --gold: #ffd700; --dark: #050505; --neon: #00f2ff; --silver: #e0e0e0; }
-        body { margin: 0; background: var(--dark); color: white; font-family: 'Orbitron', sans-serif; overflow-x: hidden; }
+        :root { --gold: #ffd700; --dark: #050505; --neon: #00f2ff; }
+        body { margin: 0; background: var(--dark); color: white; font-family: 'Orbitron', sans-serif; overflow: hidden; }
         
         canvas { position: fixed; top: 0; left: 0; z-index: -1; }
-        .container { min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 20px; }
-        
-        /* AUTH SECTION */
-        .auth-card { 
-            background: rgba(10, 10, 10, 0.95); border: 1px solid var(--gold); 
-            padding: 30px; border-radius: 30px; width: 100%; max-width: 400px; 
-            margin-top: 40px; backdrop-filter: blur(20px); text-align: center;
-            box-shadow: 0 0 40px rgba(255, 215, 0, 0.2);
+        .container { height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 10px; box-sizing: border-box; }
+
+        /* HEADER */
+        header { text-align: center; margin-bottom: 10px; width: 100%; }
+        .logo-main { width: 60px; filter: drop-shadow(0 0 5px var(--gold)); }
+
+        /* AUTH & VIP CARDS */
+        .card { 
+            background: rgba(15, 15, 15, 0.95); border: 1px solid var(--gold); 
+            padding: 25px; border-radius: 25px; width: 90%; max-width: 380px; 
+            text-align: center; backdrop-filter: blur(10px);
         }
-        input { width: 100%; padding: 15px; margin: 10px 0; border-radius: 12px; border: 1px solid #333; background: #000; color: white; box-sizing: border-box; }
-        .btn-gold { background: linear-gradient(90deg, #ffd700, #b8860b); color: #000; width: 100%; padding: 16px; border: none; border-radius: 12px; font-weight: 900; cursor: pointer; transition: 0.3s; margin-top: 10px; text-transform: uppercase; }
+        input { width: 100%; padding: 12px; margin: 8px 0; border-radius: 10px; border: 1px solid #333; background: #000; color: white; box-sizing: border-box; }
+        .btn-gold { background: linear-gradient(90deg, #ffd700, #b8860b); color: #000; width: 100%; padding: 14px; border: none; border-radius: 10px; font-weight: 900; cursor: pointer; margin-top: 10px; }
 
-        /* VIP VARIANT SECTION (NEW & IMPROVED) */
-        #vipSelection { display: none; width: 100%; max-width: 450px; margin-top: 20px; }
-        .vip-table { background: rgba(20,20,20,0.9); border: 2px solid var(--gold); border-radius: 20px; padding: 20px; text-align: center; }
-        .vip-option { background: #1a1a1a; margin: 10px 0; padding: 15px; border-radius: 15px; border: 1px solid #333; cursor: pointer; transition: 0.3s; }
-        .vip-option:hover { border-color: var(--gold); background: #222; }
-        .vip-price { color: var(--gold); font-weight: 900; display: block; margin-top: 5px; }
+        /* VIP VARIANT DESIGN */
+        .vip-list { margin-top: 15px; text-align: left; }
+        .vip-item { background: #222; padding: 12px; border-radius: 12px; margin-bottom: 8px; border: 1px solid #444; display: flex; justify-content: space-between; align-items: center; }
+        .vip-item b { color: var(--gold); font-size: 12px; }
 
-        /* DASHBOARD & PLAYER */
-        #mainDashboard { display: none; width: 100%; max-width: 1000px; margin-top: 20px; }
-        .video-container { position: relative; width: 100%; aspect-ratio: 16/9; border: 2px solid var(--gold); border-radius: 20px; overflow: hidden; background: #000; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        
-        /* LOGO OVERLAY FIX */
-        .stasiun-logo { 
-            position: absolute; top: 15px; right: 15px; width: 90px; z-index: 9999; 
-            pointer-events: none; mix-blend-mode: screen; filter: drop-shadow(0 0 5px black);
+        /* TV PLAYER SYSTEM - ALA SCTV */
+        #mainDashboard { display: none; width: 100%; max-width: 800px; }
+        .video-wrapper { 
+            position: relative; width: 100%; aspect-ratio: 16/9; 
+            background: #000; border-radius: 15px; overflow: hidden; 
+            border: 2px solid #222; box-shadow: 0 0 20px rgba(0,0,0,1);
         }
-        iframe { width: 100%; height: 100%; border: none; }
+        
+        /* LOGO WATERMARK (STAY ON TOP LIKE SCTV) */
+        .tv-watermark { 
+            position: absolute; top: 10px; right: 15px; width: 70px; 
+            z-index: 999999; pointer-events: none; opacity: 0.9;
+            filter: drop-shadow(0 0 3px rgba(0,0,0,0.8));
+        }
 
-        /* NAV GRID */
-        .nav-grid { display: grid; grid-template-columns: 1fr 1.2fr 1fr; gap: 8px; margin: 20px 0; }
-        .btn-nav { padding: 15px 5px; font-size: 10px; font-weight: 900; border-radius: 12px; border: none; cursor: pointer; text-transform: uppercase; }
+        /* NAVIGATION */
+        .nav-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 5px; margin: 15px 0; }
+        .nav-btn { padding: 12px 2px; border-radius: 8px; border: none; font-size: 9px; font-weight: 900; cursor: pointer; text-transform: uppercase; }
 
         /* PROGRAM LIST */
-        .program-box { background: #111; padding: 15px; border-radius: 20px; border: 1px solid #222; }
-        .program-item { background: #1a1a1a; padding: 15px; margin: 8px 0; border-radius: 12px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-left: 5px solid var(--gold); transition: 0.3s; }
-        .program-item:hover { background: #252525; transform: translateX(10px); }
+        .prog-container { background: #111; border-radius: 15px; padding: 10px; height: 180px; overflow-y: auto; border: 1px solid #222; }
+        .prog-item { background: #1a1a1a; padding: 12px; margin-bottom: 5px; border-radius: 8px; display: flex; justify-content: space-between; font-size: 11px; border-left: 3px solid var(--gold); }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <canvas id="starCanvas"></canvas>
+    <canvas id="stars"></canvas>
 
     <div class="container">
-        <header style="text-align: center; margin-bottom: 20px;">
-            <img src="https://raw.githubusercontent.com/triyuliansyah588ok/Visionary/main/logo_vams-removebg-preview (1).png" style="width: 120px; mix-blend-mode: screen;">
-            <h1 style="color:var(--gold); margin:5px 0; font-size: 24px; letter-spacing: 5px;">VISIONARYPLUS+</h1>
-            <p style="font-size: 10px; color: var(--silver);">GLOBAL BROADCAST SYSTEM - CHAIRMAN M RAMADHAN</p>
+        <header id="mainHeader">
+            <img src="https://raw.githubusercontent.com/triyuliansyah588ok/Visionary/main/logo_vams-removebg-preview%20(1).png" class="logo-main">
+            <h2 style="color:var(--gold); margin:0; font-size: 18px; letter-spacing: 3px;">VISIONARYPLUS+</h2>
+            <p style="font-size: 8px; margin:0;">M RAMADHAN CEO - DANANJA GROUP</p>
         </header>
 
-        <div id="authPanel" class="auth-card">
-            <h2 id="authTitle" style="color:var(--gold)">SYSTEM LOGIN</h2>
-            <div id="regFields" style="display:none;">
-                <input type="email" id="email" placeholder="Alamat Email">
-            </div>
-            <input type="text" id="user" placeholder="Username">
-            <input type="password" id="pass" placeholder="Security Key">
-            <button class="btn-gold" id="actionBtn" onclick="processAuth()">AUTHORIZE ACCESS</button>
-            <p style="font-size: 11px; margin-top: 15px;">
-                <span id="switchAuth" style="color:var(--neon); cursor:pointer;" onclick="toggleAuth()">No Account? Register as VIP Member</span>
-            </p>
+        <div id="authBox" class="card">
+            <h3 style="color:var(--gold); margin-top:0;">SYSTEM LOGIN</h3>
+            <div id="regExtra" style="display:none;"><input type="text" placeholder="Email Address"></div>
+            <input type="text" id="userInput" placeholder="Username">
+            <input type="password" id="passInput" placeholder="Security Key">
+            <button class="btn-gold" onclick="handleLogin()">AUTHORIZE ACCESS</button>
+            <p style="font-size: 10px; margin-top: 15px; color: #888;" onclick="toggleReg()">No Account? <span style="color:var(--neon)">Register VIP</span></p>
         </div>
 
-        <div id="vipSelection">
-            <div class="vip-table">
-                <h2 style="color:var(--gold)">PILIH PAKET VIP</h2>
-                <p style="font-size: 12px;">Aktifkan akun Anda untuk mengakses semua siaran.</p>
-                
-                <div class="vip-option" onclick="payVIP('ULTIMATE')">
-                    <b>VIP ULTIMATE (PERMANENT)</b>
-                    <span class="vip-price">RP 500.000 / SELAMANYA</span>
-                </div>
-                <div class="vip-option" onclick="payVIP('PREMIUM')">
-                    <b>VIP PREMIUM (1 TAHUN)</b>
-                    <span class="vip-price">RP 150.000 / TAHUN</span>
-                </div>
-                <div class="vip-option" onclick="payVIP('MONTHLY')">
-                    <b>VIP MONTHLY (30 HARI)</b>
-                    <span class="vip-price">RP 25.000 / BULAN</span>
-                </div>
-                
-                <div style="margin-top: 20px; font-size: 11px; color: var(--silver);">
-                    PEMBAYARAN GOPAY/DANA: <br>
-                    <b style="color:var(--gold); font-size: 16px;">08211553241</b><br>
-                    A.n M RAMADHAN
-                </div>
+        <div id="vipBox" class="card" style="display:none;">
+            <h3 style="color:var(--gold); margin-top:0;">AKTIVASI VIP MEMBER</h3>
+            <div class="vip-list">
+                <div class="vip-item"><div><b>ULTIMATE</b><br><small>Permanent</small></div> <span>Rp 500k</span></div>
+                <div class="vip-item"><div><b>PREMIUM</b><br><small>1 Tahun</small></div> <span>Rp 150k</span></div>
+                <div class="vip-item"><div><b>MONTHLY</b><br><small>30 Hari</small></div> <span>Rp 25k</span></div>
             </div>
+            <button class="btn-gold" onclick="alert('Hubungi Admin: 08211553241')">BAYAR VIA GOPAY / DANA</button>
         </div>
 
         <div id="mainDashboard">
-            <div class="video-container">
-                <img id="overlayLogo" src="" class="stasiun-logo" onerror="this.src='https://raw.githubusercontent.com/triyuliansyah588ok/Visionary/main/logo_vams-removebg-preview (1).png'">
-                <div id="playerFrame"></div>
+            <div class="video-wrapper" id="fullscreenArea">
+                <img id="tvLogo" src="https://raw.githubusercontent.com/triyuliansyah588ok/Visionary/main/logo_vams-removebg-preview%20(1).png" class="tv-watermark">
+                <div id="videoPlayer" style="width:100%; height:100%;"></div>
             </div>
 
             <div class="nav-grid">
-                <button onclick="loadCat('VAMS')" class="btn-nav" style="background:var(--gold); color:black;">📺 VAMS TV</button>
-                <button onclick="loadCat('DJ')" class="btn-nav" style="background:white; color:black;">📀 CENTER DJ</button>
-                <button onclick="loadCat('NSTV')" class="btn-nav" style="background:#333; color:white;">📺 NSTV</button>
+                <button onclick="loadCat('VAMS')" class="nav-btn" style="background:var(--gold);">📺 VAMS TV</button>
+                <button onclick="loadCat('DJ')" class="nav-btn" style="background:white;">📀 CENTER DJ</button>
+                <button onclick="loadCat('NSTV')" class="nav-btn" style="background:#444; color:white;">📺 NSTV</button>
             </div>
 
-            <div class="program-box">
-                <h4 id="catTitle" style="color:var(--gold); margin:0 0 10px 0; border-bottom: 1px solid #333; padding-bottom: 5px;">📡 PROGRAM LIST</h4>
-                <div id="itemsContainer"></div>
-            </div>
+            <div class="prog-container" id="progList"></div>
         </div>
     </div>
 
     <script>
-        // BACKGROUND ANIMATION
-        const canvas = document.getElementById('starCanvas');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-        let stars = Array(150).fill().map(() => ({ x: Math.random()*canvas.width, y: Math.random()*canvas.height, s: Math.random()*0.8 }));
+        // STARS ANIMATION
+        const cvs = document.getElementById('stars');
+        const ctx = cvs.getContext('2d');
+        cvs.width = window.innerWidth; cvs.height = window.innerHeight;
+        let sArr = Array(100).fill().map(() => ({x: Math.random()*cvs.width, y: Math.random()*cvs.height, r: Math.random()*1}));
         function draw() {
-            ctx.clearRect(0,0,canvas.width,canvas.height); ctx.fillStyle="white";
-            stars.forEach(s => { ctx.beginPath(); ctx.arc(s.x, s.y, s.s, 0, Math.PI*2); ctx.fill(); s.y+=0.2; if(s.y>canvas.height)s.y=0; });
+            ctx.clearRect(0,0,cvs.width,cvs.height); ctx.fillStyle="white";
+            sArr.forEach(s => { ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, 7); ctx.fill(); s.y+=0.2; if(s.y>cvs.height) s.y=0; });
             requestAnimationFrame(draw);
         }
         draw();
 
-        // AUTH LOGIC
-        let isReg = false;
-        function toggleAuth() {
-            isReg = !isReg;
-            document.getElementById('regFields').style.display = isReg ? 'block' : 'none';
-            document.getElementById('authTitle').innerText = isReg ? 'VIP REGISTRATION' : 'SYSTEM LOGIN';
-            document.getElementById('actionBtn').innerText = isReg ? 'CREATE ACCOUNT' : 'AUTHORIZE ACCESS';
-        }
+        // LOGIN SYSTEM
+        function handleLogin() {
+            const u = document.getElementById('userInput').value;
+            const p = document.getElementById('passInput').value;
 
-        function processAuth() {
-            const u = document.getElementById('user').value.trim();
-            const p = document.getElementById('pass').value.trim();
-
-            // BYPASS KHUSUS CEO
             if(u === "VisionaryPluss Founder90" && p === "DANANJA2026") {
-                alert("ACCESS GRANTED: WELCOME CHAIRMAN M RAMADHAN");
-                document.getElementById('authPanel').style.display = 'none';
+                document.getElementById('authBox').style.display = 'none';
                 document.getElementById('mainDashboard').style.display = 'block';
                 loadCat('VAMS');
-            } 
-            // JALUR PENONTON KE HALAMAN VIP
-            else if(u !== "" && p !== "") {
-                alert("LOGIN BERHASIL: Silakan Pilih Paket VIP Anda.");
-                document.getElementById('authPanel').style.display = 'none';
-                document.getElementById('vipSelection').style.display = 'block';
             } else {
-                alert("Mohon masukkan data yang benar!");
+                document.getElementById('authBox').style.display = 'none';
+                document.getElementById('vipBox').style.display = 'block';
             }
         }
 
-        function payVIP(plan) {
-            alert("SISTEM AKTIVASI: Silakan kirim pembayaran untuk paket " + plan + " ke 08211553241 (GOPAY/DANA). Akun akan aktif dalam 5 menit.");
-        }
-
         // CONTENT DATA
-        const db = {
-            'VAMS': [
-                {t: 'VAMS Official Live', id: 'D0ydazTSAyE'},
-                {t: 'VAMS Music Station', id: '8Xje26lClzY'}
-            ],
-            'NSTV': [
-                {t: 'NSTV News Stream', id: '8Xje26lClzY'},
-                {t: 'NSTV Entertainment', id: 'D0ydazTSAyE'}
-            ],
+        const data = {
+            'VAMS': [{n: 'VAMS Official Live', id: 'D0ydazTSAyE'}, {n: 'VAMS Entertainment', id: '8Xje26lClzY'}],
+            'NSTV': [{n: 'NSTV News Stream', id: '8Xje26lClzY'}, {n: 'NSTV Music Station', id: 'D0ydazTSAyE'}],
             'DJ': [
-                {t: 'DJ Biring Manggisku (V1)', id: 'D0ydazTSAyE'},
-                {t: 'DJ Slow Bass 2026 (V2)', id: '8Xje26lClzY'},
-                {t: 'DJ Dananja Group Anthem', id: 'D0ydazTSAyE'}
+                {n: 'DJ Biring Manggisku', id: 'D0ydazTSAyE'},
+                {n: 'DJ Slow Bass 2026', id: '8Xje26lClzY'},
+                {n: 'DJ Dananja Anthem', id: 'D0ydazTSAyE'}
             ]
         };
 
         function loadCat(cat) {
-            document.getElementById('catTitle').innerText = "📡 " + cat + " PROGRAMS";
-            const container = document.getElementById('itemsContainer');
+            const container = document.getElementById('progList');
             container.innerHTML = "";
-            db[cat].forEach(item => {
-                container.innerHTML += `
-                    <div class="program-item" onclick="play('${cat}', '${item.id}')">
-                        <span>${item.t}</span>
-                        <b style="color:var(--gold); font-size:10px;">LIVE VIP</b>
-                    </div>
-                `;
+            data[cat].forEach(i => {
+                container.innerHTML += `<div class="prog-item" onclick="play('${cat}','${i.id}')"><span>${i.n}</span> <b>LIVE VIP</b></div>`;
             });
-            // Update Logo Overlay
             updateLogo(cat);
         }
 
         function updateLogo(cat) {
-            const logo = document.getElementById('overlayLogo');
-            if(cat === 'VAMS') logo.src = "https://raw.githubusercontent.com/triyuliansyah588ok/Visionary/main/logo_vams-removebg-preview (1).png";
+            const logo = document.getElementById('tvLogo');
+            if(cat === 'VAMS') logo.src = "https://raw.githubusercontent.com/triyuliansyah588ok/Visionary/main/logo_vams-removebg-preview%20(1).png";
             else if(cat === 'NSTV') logo.src = "https://raw.githubusercontent.com/triyuliansyah588ok/Visionary/main/logo_nstv-removebg-preview.png";
-            else logo.src = "https://raw.githubusercontent.com/triyuliansyah588ok/Visionary/main/logo_vams-removebg-preview (1).png";
-            logo.style.display = 'block';
+            else logo.src = "https://raw.githubusercontent.com/triyuliansyah588ok/Visionary/main/logo_vams-removebg-preview%20(1).png";
         }
 
         function play(cat, id) {
-            document.getElementById('playerFrame').innerHTML = `<iframe src="https://www.youtube.com/embed/${id}?autoplay=1&modestbranding=1&rel=0" allow="autoplay; fullscreen"></iframe>`;
+            document.getElementById('videoPlayer').innerHTML = `<iframe src="https://www.youtube.com/embed/${id}?autoplay=1&modestbranding=1&rel=0&iv_load_policy=3&controls=1" style="width:100%; height:100%; border:none;" allow="autoplay; fullscreen"></iframe>`;
             updateLogo(cat);
         }
+
+        function toggleReg() { document.getElementById('regExtra').style.display = 'block'; }
     </script>
 </body>
 </html>
