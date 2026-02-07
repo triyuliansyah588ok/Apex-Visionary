@@ -5,67 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>VisionaryPlus+ | CEO M RAMADHAN</title>
     <style>
-        :root { --gold: #ffd700; --dark: #000; --neon: #00f2ff; }
-        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background: #000; overflow: hidden; font-family: 'Orbitron', sans-serif; color: white; }
+        :root { --gold: #ffd700; --dark: #000; }
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background: #000; overflow: hidden; font-family: 'Arial', sans-serif; color: white; }
         
-        canvas { position: fixed; top: 0; left: 0; z-index: 1; pointer-events: none; }
-        
-        /* DASHBOARD BROADCAST */
+        /* BROADCAST AREA */
         #mainDash { display: none; width: 100vw; height: 100vh; flex-direction: column; z-index: 10; position: relative; }
-        #broadcast-room { position: relative; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; overflow: hidden; }
+        #broadcast-room { position: relative; width: 100%; height: 60%; background: #000; display: flex; justify-content: center; align-items: center; }
         
-        /* LOGO WATERMARK SCTV STYLE */
-        #watermark { position: absolute; top: 5%; right: 5%; width: 90px; z-index: 9999999; pointer-events: none; mix-blend-mode: screen; filter: drop-shadow(0 0 8px black); }
+        /* LOGO WATERMARK - KUNCI SCTV STYLE */
+        #watermark { position: absolute; top: 15px; right: 15px; width: 85px; z-index: 9999999; pointer-events: none; mix-blend-mode: screen; filter: drop-shadow(0 0 5px black); }
         video { width: 100%; height: 100%; object-fit: contain; }
 
-        /* UI OVERLAY */
-        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; display: flex; justify-content: center; align-items: center; z-index: 999999; }
-        .card { background: rgba(15,15,15,0.98); border: 2px solid var(--gold); padding: 30px; border-radius: 25px; text-align: center; width: 85%; max-width: 400px; box-shadow: 0 0 20px var(--gold); }
+        /* CATALOG PROGRAM (DI BAWAH VIDEO) */
+        #program-list { height: 40%; background: #111; padding: 15px; overflow-y: auto; border-top: 2px solid var(--gold); }
+        .grid-program { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .prog-card { background: #222; border-radius: 12px; overflow: hidden; border: 1px solid #333; cursor: pointer; transition: 0.3s; }
+        .prog-card:hover { border-color: var(--gold); transform: scale(0.98); }
+        .prog-card img { width: 100%; height: 100px; object-fit: cover; }
+        .prog-card p { padding: 8px; margin: 0; font-size: 11px; text-align: center; font-weight: bold; }
+
+        /* UI OVERLAY LOGIN & DAFTAR */
+        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; display: flex; justify-content: center; align-items: center; z-index: 9999999; }
+        .card { background: #111; border: 2px solid var(--gold); padding: 30px; border-radius: 20px; text-align: center; width: 85%; max-width: 400px; }
         input { width: 100%; padding: 14px; margin: 8px 0; border-radius: 10px; border: 1px solid #333; background: #000; color: white; box-sizing: border-box; }
-        .btn-gold { background: var(--gold); color: #000; width: 100%; padding: 16px; border: none; border-radius: 10px; font-weight: 900; cursor: pointer; margin-top: 10px; text-transform: uppercase; }
-        
-        /* PRICING TABLE */
-        .price-box { background: #111; border: 1px solid #333; padding: 10px; border-radius: 12px; margin: 8px 0; display: flex; justify-content: space-between; align-items: center; font-size: 13px; }
-        .price-box b { color: var(--gold); }
+        .btn-gold { background: var(--gold); color: #000; width: 100%; padding: 16px; border: none; border-radius: 10px; font-weight: 900; cursor: pointer; text-transform: uppercase; }
+
+        .nav-footer { display: flex; background: #000; padding: 10px; border-top: 1px solid #333; }
+        .btn-nav { flex: 1; padding: 12px; border: none; font-weight: bold; cursor: pointer; font-size: 10px; color: white; background: #222; margin: 0 5px; border-radius: 5px; }
+        .btn-nav.active { background: var(--gold); color: black; }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <canvas id="stars"></canvas>
-
-    <div id="screenDaftar" class="overlay">
-        <div class="card">
-            <h2 style="color:var(--gold)">BUAT AKUN BARU</h2>
-            <input type="text" id="regUser" placeholder="Username">
-            <input type="password" id="regPass" placeholder="Password">
-            <button class="btn-gold" onclick="prosesDaftar()">DAFTAR SEKARANG</button>
-            <p style="font-size: 11px; margin-top: 15px; cursor: pointer; color: #888;" onclick="gantiScreen('screenLogin')">Sudah punya akun? Login</p>
-        </div>
-    </div>
-
-    <div id="screenLogin" class="overlay" style="display:none;">
-        <div class="card">
-            <h2 style="color:var(--gold)">LOGIN MEMBER</h2>
-            <input type="text" id="logUser" placeholder="Username">
-            <input type="password" id="logPass" placeholder="Password">
-            <button class="btn-gold" onclick="prosesLogin()">MASUK</button>
-        </div>
-    </div>
-
-    <div id="screenVIP" class="overlay" style="display:none;">
-        <div class="card">
-            <h2 style="color:var(--gold)">AKTIVASI PAKET</h2>
-            <p style="font-size: 11px; color: #aaa;">Pilih paket untuk mulai menonton</p>
-            
-            <div class="price-box"><span>1 BULAN</span> <b>Rp 60.000</b></div>
-            <div class="price-box"><span>3 BULAN</span> <b>Rp 200.000</b></div>
-            <div class="price-box"><span>1 TAHUN</span> <b>Rp 1.000.000</b></div>
-            <div class="price-box"><span>3 TAHUN</span> <b>Rp 4.000.000</b></div>
-
-            <p style="font-size: 11px; margin-top: 15px;">Konfirmasi Pembayaran ke CEO:<br><b style="color:var(--neon)">08211553241 (WhatsApp)</b></p>
-            <button class="btn-gold" onclick="alert('Kirim bukti transfer ke WhatsApp CEO untuk aktivasi akun Anda!')">HUBUNGI CEO</button>
-            <p style="font-size: 10px; margin-top: 10px; color: #555; cursor:pointer;" onclick="gantiScreen('screenLogin')">Logout</p>
+    <div id="screenGate" class="overlay">
+        <div class="card" id="formBox">
+            <h2 style="color:var(--gold)">VISIONARYPLUS+</h2>
+            <div id="authFields">
+                <input type="text" id="user" placeholder="Username">
+                <input type="password" id="pass" placeholder="Password">
+                <button class="btn-gold" onclick="prosesMasuk()">MASUK STUDIO</button>
+                <p onclick="setDaftar(true)" style="font-size: 10px; margin-top: 15px; color: #888; cursor:pointer;">Belum punya akun? Daftar Sekarang</p>
+            </div>
         </div>
     </div>
 
@@ -76,81 +56,103 @@
                 <source id="v-source" src="" type="video/mp4">
             </video>
         </div>
-        <div style="padding: 15px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; background: #000; border-top: 2px solid var(--gold);">
-            <button onclick="play('VAMS')" style="padding: 15px; background: var(--gold); border: none; font-weight: bold; border-radius: 10px;">VAMS TV</button>
-            <button onclick="play('DJ')" style="padding: 15px; background: white; border: none; font-weight: bold; border-radius: 10px;">DJ CENTER</button>
-            <button onclick="play('NSTV')" style="padding: 15px; background: #333; color: white; border: none; font-weight: bold; border-radius: 10px;">NSTV</button>
+
+        <div id="program-list">
+            <h3 id="station-title" style="color:var(--gold); font-size: 14px; margin-bottom: 15px;">PILIK PROGRAM VAMS TV</h3>
+            <div class="grid-program" id="gridBox">
+                </div>
+        </div>
+
+        <div class="nav-footer">
+            <button onclick="switchStation('VAMS')" id="navVAMS" class="btn-nav active">VAMS TV</button>
+            <button onclick="switchStation('DJ')" id="navDJ" class="btn-nav">DJ CENTER</button>
+            <button onclick="switchStation('NSTV')" id="navNSTV" class="btn-nav">NSTV</button>
         </div>
     </div>
 
     <script>
-        // Animasi Bintang
-        const canvas = document.getElementById('stars');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-        let sArr = Array(150).fill().map(() => ({ x: Math.random()*canvas.width, y: Math.random()*canvas.height, r: Math.random()*1.5 }));
-        function anim() {
-            ctx.clearRect(0,0,canvas.width,canvas.height); ctx.fillStyle="white";
-            sArr.forEach(s => { ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, 7); ctx.fill(); s.y += 0.3; if(s.y > canvas.height) s.y = 0; });
-            requestAnimationFrame(anim);
-        }
-        anim();
+        let modeDaftar = false;
 
-        function gantiScreen(id) {
-            document.querySelectorAll('.overlay').forEach(s => s.style.display = 'none');
-            document.getElementById(id).style.display = 'flex';
+        function setDaftar(val) {
+            modeDaftar = val;
+            const title = modeDaftar ? "PENDAFTARAN VIP" : "VISIONARYPLUS+";
+            const btnText = modeDaftar ? "DAFTAR & LOGIN" : "MASUK STUDIO";
+            const linkText = modeDaftar ? "Sudah punya akun? Login" : "Belum punya akun? Daftar Sekarang";
+            document.querySelector('#formBox h2').innerText = title;
+            document.querySelector('.btn-gold').innerText = btnText;
+            document.querySelector('#formBox p').innerText = linkText;
         }
 
-        // 1. FUNGSI DAFTAR
-        function prosesDaftar() {
-            const u = document.getElementById('regUser').value;
-            const p = document.getElementById('regPass').value;
-            if(u && p) {
-                localStorage.setItem("user_" + u, p);
-                alert("Pendaftaran Berhasil! Silakan Login.");
-                gantiScreen('screenLogin');
-            } else { alert("Isi Username dan Password!"); }
-        }
-
-        // 2. FUNGSI LOGIN
-        function prosesLogin() {
-            const u = document.getElementById('logUser').value;
-            const p = document.getElementById('logPass').value;
-            const savedP = localStorage.getItem("user_" + u);
-
-            // JALUR CEO (LANGSUNG DASHBOARD)
+        function prosesMasuk() {
+            const u = document.getElementById('user').value;
+            const p = document.getElementById('pass').value;
+            
             if(u === "VisionaryPluss Founder90" && p === "DANANJA2026") {
-                alert("Selamat Datang Bos!");
-                masukDashboard();
-            } 
-            // JALUR MEMBER (KE HALAMAN BAYAR)
-            else if(savedP && savedP === p) {
-                gantiScreen('screenVIP');
-            } else {
-                alert("Username/Password Salah!");
-            }
+                bukaStudio();
+            } else if(u && p) {
+                if(modeDaftar) {
+                    localStorage.setItem("acc_" + u, p);
+                    alert("Daftar Berhasil! Silakan klik Masuk.");
+                    setDaftar(false);
+                } else {
+                    const saved = localStorage.getItem("acc_" + u);
+                    if(saved === p) { bukaStudio(); } else { alert("Data Salah!"); }
+                }
+            } else { alert("Isi Username/Pass!"); }
         }
 
-        function masukDashboard() {
-            document.querySelectorAll('.overlay').forEach(s => s.style.display = 'none');
+        function bukaStudio() {
+            document.getElementById('screenGate').style.display = 'none';
             document.getElementById('mainDash').style.display = 'flex';
-            play('VAMS');
+            switchStation('VAMS');
         }
 
-        const db = {
-            'VAMS': {v: 'https://raw.githubusercontent.com/triyuliansyah588ok/Visionary/main/vams_promo.mp4', l: 'https://raw.githubusercontent.com/triyuliansyah588ok/Visionary/main/VAMSTV.png'},
-            'NSTV': {v: 'https://www.w3schools.com/html/movie.mp4', l: 'https://raw.githubusercontent.com/triyuliansyah588ok/Visionary/main/logo_nstv-removebg-preview.png'},
-            'DJ': {v: 'https://www.w3schools.com/html/mov_bbb.mp4', l: 'https://raw.githubusercontent.com/triyuliansyah588ok/Visionary/main/VAMSTV.png'}
+        // DATABASE PROGRAM
+        const content = {
+            'VAMS': [
+                {name: "VAMS NEWS HD", vid: "https://www.w3schools.com/html/movie.mp4", img: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=400"},
+                {name: "VAMS TALKSHOW", vid: "https://www.w3schools.com/html/mov_bbb.mp4", img: "https://images.unsplash.com/photo-1478737270239-2fccd2508567?q=80&w=400"}
+            ],
+            'DJ': [
+                {name: "DJ REMIX 2026", vid: "https://www.w3schools.com/html/mov_bbb.mp4", img: "https://images.unsplash.com/photo-1571266028243-e4733b0f0bb1?q=80&w=400"},
+                {name: "DJ SLOW MANTAP", vid: "https://www.w3schools.com/html/movie.mp4", img: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=400"}
+            ],
+            'NSTV': [
+                {name: "NSTV DOCUMENTARY", vid: "https://www.w3schools.com/html/movie.mp4", img: "https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=400"},
+                {name: "NSTV SPORT LIVE", vid: "https://www.w3schools.com/html/mov_bbb.mp4", img: "https://images.unsplash.com/photo-1504450758481-7338eba7524a?q=80&w=400"}
+            ]
         };
 
-        function play(k) {
-            const data = db[k];
-            const video = document.getElementById('v-player');
-            const source = document.getElementById('v-source');
-            document.getElementById('watermark').src = data.l;
-            source.src = data.v;
-            video.load();
-            video.play();
+        function switchStation(st) {
+            // Update UI Tombol
+            document.querySelectorAll('.btn-nav').forEach(b => b.classList.remove('active'));
+            document.getElementById('nav'+st).classList.add('active');
+            
+            // Update Logo
+            const logo = st === 'NSTV' ? "https://raw.githubusercontent.com/triyuliansyah588ok/Visionary/main/logo_nstv-removebg-preview.png" : "https://raw.githubusercontent.com/triyuliansyah588ok/Visionary/main/VAMSTV.png";
+            document.getElementById('watermark').src = logo;
+
+            // Update Judul & Grid
+            document.getElementById('station-title').innerText = "PROGRAM " + st + " CENTER";
+            const grid = document.getElementById('gridBox');
+            grid.innerHTML = "";
+
+            content[st].forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'prog-card';
+                card.onclick = () => {
+                    const v = document.getElementById('v-player');
+                    document.getElementById('v-source').src = item.vid;
+                    v.load(); v.play();
+                };
+                card.innerHTML = `<img src="${item.img}"><p>${item.name}</p>`;
+                grid.appendChild(card);
+            });
+            
+            // Load program pertama otomatis
+            const v = document.getElementById('v-player');
+            document.getElementById('v-source').src = content[st][0].vid;
+            v.load(); v.play();
         }
     </script>
 </body>
